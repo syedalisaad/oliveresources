@@ -90,13 +90,7 @@
                 </a>
             </li>
 
-            @if(getAuth()->is_developer)
-                <li class="nav-item">
-                    <a class="nav-link {{ $tab == 'developer-option' ? 'active' : '' }}" href="#developer-option" data-toggle="tab">
-                        <i class="fas fa-user-secret"></i> Developer Options
-                    </a>
-                </li>
-            @endif
+        
 
         </ul>
     </div>
@@ -115,9 +109,6 @@
             @include( admin_module_render('tab-bucket.contact-support') )
         </div>
 
-        <div class="tab-pane {{ $tab == 'payment-gateway' ? 'active' : '' }}" id="payment-gateway">
-            @include( admin_module_render('tab-bucket.payment-gateways') )
-        </div>
 
         <div class="tab-pane {{ $tab == 'frontend-support' ? 'active' : '' }}" id="frontend-support">
             @include( admin_module_render('tab-bucket.frontend-support') )
@@ -139,11 +130,6 @@
             @include( admin_module_render('tab-bucket.announcement') )
         </div>
 
-        @if(getAuth()->is_developer)
-            <div class="tab-pane {{ $tab == 'developer-option' ? 'active' : '' }}" id="developer-option">
-                @include( admin_module_render('tab-bucket.developer-option') )
-            </div>
-        @endif
 
     </div>
 </div>

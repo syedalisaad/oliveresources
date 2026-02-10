@@ -48,22 +48,31 @@ class SettingController extends \App\Http\Controllers\AdminController {
         'monthlyOn'   => 'Monthly On'
     ];
 
-    public function getSites() {
-        $is_settings = ( in_array( \Perms::$SETTING['GENERAL'], getAuth()->role_permissions ) || in_array( \Perms::$SETTING['SOCIAL_NETWORK'], getAuth()->role_permissions ) || in_array( \Perms::$SETTING['CONTACT_SUPPORT'], getAuth()->role_permissions ) || in_array( \Perms::$SETTING['FRONTEND_SUPPORT'], getAuth()->role_permissions ) || in_array( \Perms::$SETTING['PAYMENT_GATEWAY'], getAuth()->role_permissions ) || in_array( \Perms::$SETTING['CHANGE_PASSWORD'], getAuth()->role_permissions ) );
-        if ( true !== ( isAdmin() || $is_settings ) ) {
-            abort( 403, "You don't have permission to view this page" );
-        }
-        $data     = [];
+    public function getSites()
+    {
         $settings = Setting::all();
-        if ( count( $settings ) ) {
-            foreach ( $settings as $key => $value ) {
-                $data[ $value->key ] = $value->value;
-            }
+        $data = [];
+        foreach ($settings as $setting) {
+            $data[$setting->key] = $setting->value;
         }
-        $schedule = self::$SCHEDULE;
 
-        #return view( 'Setting::admin.setting_template', ['data' => $data]);
-        return view( admin_module_view( 'setting_template', $this->module ), compact( 'settings', 'schedule' ), [ 'data' => $data ] );
+        $schedule = [
+            'AfterMinute' => 'After Minute',
+            'Afterhourly' => 'After an hourly',
+            'dailyAt'     => 'Daily At',
+            'weeklyOn'    => 'Weekly On',
+            'monthlyOn'   => 'Monthly On'
+        ];
+
+        return view(
+            admin_module_view('setting_template', $this->module),
+            [
+                'settings' => $settings,
+                'schedule' => $schedule,
+                'data'     => $data,
+                       'errors'   => session()->get('errors') ?? new \Illuminate\Support\ViewErrorBag
+            ]
+        );
     }
 
     public function postSites( Request $request ) {
@@ -71,6 +80,19 @@ class SettingController extends \App\Http\Controllers\AdminController {
 
         // Site Configurations
         if ( $request->sites ) {
+              $request->validate([
+            'sites.site_logo'        => 'nullable|image|mimes:jpg,jpeg,png,webp|max:1024',
+            'sites.site_logo_footer' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:1024',
+            'sites.share_logo'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:1024',
+            'sites.site_favicon'     => 'nullable|file|mimes:ico|max:100',
+            'sites.site_name'        => 'required|string|max:255',
+            'sites.email_info'       => 'nullable|email|max:255',
+            'sites.email_support'    => 'nullable|email|max:255',
+            'sites.email_opperations'=> 'nullable|email|max:255',
+            'sites.email_no_reply'   => 'nullable|email|max:255',
+            'sites.footer_about'     => 'nullable|string',
+            'sites.footer_text'      => 'nullable|string',
+        ]);
             $sites = $request->sites;
             // Make a folder path where file will be stored [ Folder + Storage = public + Disk = local]
             $this->findOrCreateDirectory( Setting::$storage_disk );
@@ -292,10 +314,10 @@ class SettingController extends \App\Http\Controllers\AdminController {
             $request->session()->flash( 'account-tab', 'developer-option' );
             Setting::where( 'key', 'developers' )->update( array( 'value' => json_encode( $request->developers ) ) );
         }
-        $request->session()->flash( 'alert-message', [
-            'status'  => 'success',
-            'message' => 'Record has been successfully updated'
-        ] );
+        session()->flash('alert-message', [
+    'status'  => 'success',
+    'message' => 'Record has been successfully updated'
+]);
 
         return redirect()->route( admin_route( 'site.setting' ) );
     }

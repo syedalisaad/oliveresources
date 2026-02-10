@@ -1,6 +1,7 @@
 @php use \App\Models\Setting; @endphp
 <form action="{{ route(admin_route('site.save_setting')) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
+
     @php $site = $data['sites']??null; @endphp
     <div class="card-body">
         <h4>General Setting</h4><br/>
