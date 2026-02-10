@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (preloader) {
         preloader.style.transition = 'opacity 0.5s';
         preloader.style.opacity = '0';
-        setTimeout(() => { preloader.style.display = 'none'; }, 500);
+        setTimeout(() => { preloader.style.display = 'none'; }, 300);
     }
 });
 </script>
