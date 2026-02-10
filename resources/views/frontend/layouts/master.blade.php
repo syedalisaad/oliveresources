@@ -293,7 +293,7 @@
             <div class="main-header">
                 <div class="header-left">
                     <div class="header-logo">
-                        <a href="{{url('/')}}" class="d-flex"><img loading="lazy" title="Website Logo" alt="Olive Resources"
+                        <a href="{{url('/')}}" class="d-flex"><img loading="lazy" rel="preload" as="image" title="Website Logo" alt="Olive Resources"
                                 src="{{ asset( front_asset('imgs/theme/logo.png'))}}" width="206" height="46" /></a>
                     </div>
                     <div class="header-nav">
@@ -396,7 +396,7 @@
             <div class="row">
                 <div class="col-md-6 handle-footer-image d-flex align-items-center">
                     <a href="{{url('/')}}" class="d-flex align-items-center">
-                        <img loading="lazy" title="Website Logo" class="img-fluid w-md-50 w-sm-75" alt="Olive Resources"
+                        <img rel="preload" as="image" loading="lazy" title="Website Logo" class="img-fluid w-md-50 w-sm-75" alt="Olive Resources"
                             src="{{ asset( front_asset('imgs/theme/logo.png'))}}" width="260" height="42" /></a>
                 </div>
                 <div class="col-md-6 col-sm-12">

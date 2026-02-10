@@ -1,5 +1,5 @@
 @extends(front_layout('master'))
-@section('title', 'oliveresources | Top Recruitment Agency | Job Placement in Pakistan, USA, Dubai, UK, Saudi Arabia, KSA & Malaysia')
+@section('title', 'Olive Resources | Top Recruitment Agency | Job Placement in Pakistan, USA, Dubai, UK, Saudi Arabia, KSA & Malaysia')
 @section('meta_tags')
 <meta name="keywords"
     content="recruitment agency, job placement, HR solutions, staffing, recruitment Pakistan, recruitment USA, job agency Dubai, job placement UK, recruitment Saudi Arabia,recruitment KSA, HR services Malaysia" />
@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="banner-imgs">
-                                    <img alt="Olive Resources" src="{{ asset(front_asset('imgs/banner/banner.png')) }}"
+                                    <img rel="preload" as="image" src="{{ asset(front_asset('imgs/banner/banner.png')) }}"
                                         class="img-responsive img-banner shape-1"    alt="Olive Resources Banner" 
      width="153" height="400" 
      loading="lazy"/>
