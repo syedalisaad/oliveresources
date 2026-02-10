@@ -504,7 +504,7 @@
 
             setTimeout(() => {
                 preloader.style.display = 'none'; // Completely remove preloader
-            }, 500); // Matches the duration of the fade-out transition
+            }, 50); // Matches the duration of the fade-out transition
 
 
         });
