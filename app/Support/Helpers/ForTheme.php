@@ -173,7 +173,7 @@ function admin_heading($default = null)
 
 function admin_datetime_format($reference_data, $time = false, $date = false)
 {
-    return  $time ?
+    return $time ?
         date('F d, Y g:i a', strtotime($reference_data)) :
         date('F d, Y', strtotime($reference_data));
 }

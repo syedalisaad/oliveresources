@@ -1,5 +1,11 @@
 {
     "preset": "laravel",
+     "paths": [
+        "app",
+        "routes",
+        "database",
+        "resources/views"
+    ],
     "exclude": [
         "storage",
         "vendor"

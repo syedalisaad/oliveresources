@@ -43,7 +43,7 @@ class UserHospitalInfo extends Model
 
     public function getApprovedStatusAttribute()
     {
-        return  $this->is_approved == 1 ? 'Approved' : 'Un-Approved';
+        return $this->is_approved == 1 ? 'Approved' : 'Un-Approved';
     }
 
     public function getLogoImageUrlAttribute()

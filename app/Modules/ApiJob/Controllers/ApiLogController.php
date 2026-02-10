@@ -621,12 +621,12 @@ class ApiLogController extends \App\Http\Controllers\AdminController
                                     $measure_ids = $table->where('facility_id', $collection['facility_id'])->where('measure_id', $collection['measure_id'])->first();
                                     if (! empty($measure_ids)) {
                                         $collection['updated_at'] = date('Y-m-d h:i:sa');
-                                        echo  $collection['facility_id'] ?? 'Facility_id is not required'.'Facility_id update   </br>';
+                                        echo $collection['facility_id'] ?? 'Facility_id is not required'.'Facility_id update   </br>';
                                         $update_data[$update_no] = Arr::only($collection, $getFillable);
                                         $update_no++;
                                     } else {
                                         $collection['created_at'] = date('Y-m-d h:i:sa');
-                                        echo  $collection['facility_id'] ?? 'Facility_id is not required'.'Facility_id insert   </br>';
+                                        echo $collection['facility_id'] ?? 'Facility_id is not required'.'Facility_id insert   </br>';
                                         $insert_data[$insert_no] = Arr::only($collection, $getFillable);
                                         $insert_no++;
                                     }
