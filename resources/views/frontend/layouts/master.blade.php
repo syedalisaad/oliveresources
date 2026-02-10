@@ -263,25 +263,25 @@
                     <div class="mobile-social-icon mb-20 ">
                         <p class="mb-25">Follow Us</p>
                          @if(isset($site_settings['social_links']['facebook']) && $site_settings['social_links']['facebook'])
-        <a href="{{ $site_settings['social_links']['facebook'] }}" target="_blank" class="icon-socials" alt="Facebook">
+        <a href="{{ $site_settings['social_links']['facebook'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials" alt="Facebook">
             <i class="fa fa-facebook" style="font-size:24px"></i> <span style="display:none">Facebook</span>
         </a>
     @endif
 
     @if(isset($site_settings['social_links']['twitter']) && $site_settings['social_links']['twitter'])
-        <a href="{{ $site_settings['social_links']['twitter'] }}" target="_blank" class="icon-socials icon-twitter" alt="Twitter">
+        <a href="{{ $site_settings['social_links']['twitter'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials icon-twitter" alt="Twitter">
             <i class="fa fa-twitter" style="font-size:24px"></i> <span style="display:none">Twitter</span>
         </a>
     @endif
 
     @if(isset($site_settings['social_links']['instagram']) && $site_settings['social_links']['instagram'])
-        <a href="{{ $site_settings['social_links']['instagram'] }}" target="_blank" class="icon-socials icon-instagram" alt="Instagram">
+        <a href="{{ $site_settings['social_links']['instagram'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials icon-instagram" alt="Instagram">
             <i class="fa fa-instagram" style="font-size:24px"></i> <span>Instagram</span>
         </a>
     @endif
 
     @if(isset($site_settings['social_links']['linkedin']) && $site_settings['social_links']['linkedin'])
-        <a href="{{ $site_settings['social_links']['linkedin'] }}" target="_blank" class="icon-socials icon-linkedin" alt="LinkedIn">
+        <a href="{{ $site_settings['social_links']['linkedin'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials icon-linkedin" alt="LinkedIn">
             <i class="fa fa-linkedin" style="font-size:24px"></i> <span style="display:none">LinkedIn</span>
         </a>
     @endif
@@ -334,25 +334,25 @@
                     <div class="col-md-6 text-md-end text-start">
                         <div class="footer-social">
     @if(isset($site_settings['social_links']['facebook']) && $site_settings['social_links']['facebook'])
-        <a href="{{ $site_settings['social_links']['facebook'] }}" target="_blank" class="icon-socials" alt="Facebook">
+        <a href="{{ $site_settings['social_links']['facebook'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials" alt="Facebook">
             <i class="fa fa-facebook" style="font-size:24px"></i> <span style="display:none">Facebook</span>
         </a>
     @endif
 
     @if(isset($site_settings['social_links']['twitter']) && $site_settings['social_links']['twitter'])
-        <a href="{{ $site_settings['social_links']['twitter'] }}" target="_blank" class="icon-socials icon-twitter" alt="Twitter">
+        <a href="{{ $site_settings['social_links']['twitter'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials icon-twitter" alt="Twitter">
             <i class="fa fa-twitter" style="font-size:24px"></i> <span style="display:none">Twitter</span>
         </a>
     @endif
 
     @if(isset($site_settings['social_links']['instagram']) && $site_settings['social_links']['instagram'])
-        <a href="{{ $site_settings['social_links']['instagram'] }}" target="_blank" class="icon-socials icon-instagram" alt="Instagram">
+        <a href="{{ $site_settings['social_links']['instagram'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials icon-instagram" alt="Instagram">
             <i class="fa fa-instagram" style="font-size:24px"></i> <span style="display:none">Instagram</span>
         </a>
     @endif
 
     @if(isset($site_settings['social_links']['linkedin']) && $site_settings['social_links']['linkedin'])
-        <a href="{{ $site_settings['social_links']['linkedin'] }}" target="_blank" class="icon-socials icon-linkedin" alt="LinkedIn">
+        <a href="{{ $site_settings['social_links']['linkedin'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials icon-linkedin" alt="LinkedIn">
             <i class="fa fa-linkedin" style="font-size:24px"></i> <span style="display:none">LinkedIn</span>
         </a>
     @endif
