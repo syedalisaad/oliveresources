@@ -5817,8 +5817,6 @@ label {
   color: #727272;
   font-size: 16px;
 }
-
-/*page-faqs*/
 .faqs-imgs .faqs-1 {
   border-radius: 80px 80px 80px 0;
 }
@@ -8118,6 +8116,7 @@ label {
 }
 
 .service-card-1:hover h3,
+.service-card-1:hover h5,
 .service-card-4:hover h3,
 .service-card-7:hover h3,
 .service-card-10:hover h3,
