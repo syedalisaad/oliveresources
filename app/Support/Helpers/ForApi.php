@@ -1,5 +1,6 @@
 <?php
-//============================================================+
+
+// ============================================================+
 // File name    : For API
 // Created At   : 2021-06
 
@@ -7,8 +8,6 @@
 // @Author      : Junaid Ahmed
 // @github      : https://github.com/xunaidahmed
 // -------------------------------------------------------------------
-
-use \App\Models\User;
 
 function validate_errors($errors)
 {
@@ -28,7 +27,7 @@ function response_replace_message($message, $replace = null)
 
     if (count($items)) {
         foreach ($items as $key => $value) {
-            $pattern = '/{' . $key . '}/i';
+            $pattern = '/{'.$key.'}/i';
             $message = preg_replace($pattern, $value, $message);
         }
     }
@@ -37,20 +36,18 @@ function response_replace_message($message, $replace = null)
 }
 
 /**
- *
  * FCM Token Policy "extras"
  * - - - - - - - - - - - - - - - - - - - - - -
- *
  */
-function curl_service_provider($query,$OFFSET)
+function curl_service_provider($query, $OFFSET)
 {
-    $api_url = "https://data.cms.gov/provider-data/api/1/datastore/sql?query=" . urlencode($query . '[LIMIT 50 OFFSET '.$OFFSET.']');
+    $api_url = 'https://data.cms.gov/provider-data/api/1/datastore/sql?query='.urlencode($query.'[LIMIT 50 OFFSET '.$OFFSET.']');
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_URL, $api_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_HEADER, FALSE);
-//    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    //    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     $result = curl_exec($ch);
@@ -61,24 +58,23 @@ function curl_service_provider($query,$OFFSET)
 }
 
 /**
- *
  * Notification for Mobile Notification (FCM)
  * - - - - - - - - - - - - - - - - - - - - - -
- *
  */
 function send_fcm_notify($token, $notification, $data = [])
 {
     /**
      * @notification:
+     *
      * @var (title, body)
      *
      * @data
-     * @var custom variable array
      *
+     * @var custom variable array
      */
     $fields = [
         'to' => $token,
-        'notification' => $notification
+        'notification' => $notification,
     ];
 
     if (count($data)) {
@@ -87,10 +83,10 @@ function send_fcm_notify($token, $notification, $data = [])
 
     $FIREBASE_AUTHORIZATION_KEY = env('FIREBASE_AUTHORIZATION_KEY');
 
-    $headers = array(
-        'Authorization:key=' . $FIREBASE_AUTHORIZATION_KEY,
-        'Content-Type:application/json'
-    );
+    $headers = [
+        'Authorization:key='.$FIREBASE_AUTHORIZATION_KEY,
+        'Content-Type:application/json',
+    ];
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');

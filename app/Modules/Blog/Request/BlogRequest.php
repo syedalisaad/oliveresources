@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Blog\Request;
+<?php
+
+namespace App\Modules\Blog\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,21 +13,20 @@ class BlogRequest extends FormRequest
      */
     public function rules()
     {
-        $item_id = \Request::segment( 3 );
+        $item_id = \Request::segment(3);
 
         $rules = [
-            'name'         => 'required|min:5|max:200|unique:posts,name,NULL,id,deleted_at,NULL',
-            'short_desc'   => 'required|max:250',
-            'description'  => 'required',
-            'source_image' => 'required|image|mimes:webp,jpeg,png,jpg,gif|max:' . env( 'IMG_MAX_SIZE', '2048' ),
+            'name' => 'required|min:5|max:200|unique:posts,name,NULL,id,deleted_at,NULL',
+            'short_desc' => 'required|max:250',
+            'description' => 'required',
+            'source_image' => 'required|image|mimes:webp,jpeg,png,jpg,gif|max:'.env('IMG_MAX_SIZE', '2048'),
         ];
 
-        switch ( $this->method() )
-        {
+        switch ($this->method()) {
             case 'PUT':
-                $rules['name'] = 'required|max:200|unique:posts,name,' . $item_id;
-                $rules['source_image'] = 'image|mimes:webp,jpeg,png,jpg,gif|max:'. env( 'IMG_MAX_SIZE', '2048' );
-            break;
+                $rules['name'] = 'required|max:200|unique:posts,name,'.$item_id;
+                $rules['source_image'] = 'image|mimes:webp,jpeg,png,jpg,gif|max:'.env('IMG_MAX_SIZE', '2048');
+                break;
         }
 
         return $rules;
@@ -39,7 +40,7 @@ class BlogRequest extends FormRequest
     public function attributes()
     {
         return [
-            'short_desc'   => 'short description',
+            'short_desc' => 'short description',
             'source_image' => 'post image',
         ];
     }

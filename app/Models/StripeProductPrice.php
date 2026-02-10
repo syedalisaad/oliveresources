@@ -1,7 +1,8 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Schema;
 
 class StripeProductPrice extends Model
 {
@@ -9,36 +10,40 @@ class StripeProductPrice extends Model
 
     public $timestamps = false;
 
-    static public $RECURRING_MONTH  = 1;
-    static public $RECURRING_YEAR   = 2;
-    static public $RECURRING_DAILY  = 3;
+    public static $RECURRING_MONTH = 1;
+
+    public static $RECURRING_YEAR = 2;
+
+    public static $RECURRING_DAILY = 3;
 
     public $casts = [
-        'extras'=> 'array'
+        'extras' => 'array',
     ];
 
     public function getFormatRecurryAttribute()
     {
-        switch ( $this->recurring ) {
+        switch ($this->recurring) {
             case StripeProductPrice::$RECURRING_MONTH:
                 return 'Monthly';
-            break;
+                break;
             case StripeProductPrice::$RECURRING_YEAR:
                 return 'Yearly';
-            break;
+                break;
             case StripeProductPrice::$RECURRING_DAILY:
                 return 'Daily';
-            break;
+                break;
         }
 
         return 0;
     }
 
-    public function getPriceAmountAttribute() {
-        return $this->price . ' '.Setting::$DEFAULT_CURRENCY;
+    public function getPriceAmountAttribute()
+    {
+        return $this->price.' '.Setting::$DEFAULT_CURRENCY;
     }
 
-    public function stripe_product() {
-        return $this->belongsTo( StripeProduct::class, 'stripe_product_id', 'id' );
+    public function stripe_product()
+    {
+        return $this->belongsTo(StripeProduct::class, 'stripe_product_id', 'id');
     }
 }

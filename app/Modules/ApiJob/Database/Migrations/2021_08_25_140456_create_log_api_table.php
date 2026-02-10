@@ -14,7 +14,7 @@ class CreateLogApiTable extends Migration
     public function up()
     {
 
-        /*cron job api*/
+        /* cron job api */
         Schema::create('api_logs', function (Blueprint $table) {
 
             $table->id();
@@ -22,7 +22,7 @@ class CreateLogApiTable extends Migration
             $table->string('patient_category', 50)->nullable();
             $table->integer('offset');
             $table->tinyInteger('is_active')->default(0);
-            $table->string('status',50);
+            $table->string('status', 50);
             $table->string('error_message')->nullable();
             $table->tinyInteger('count_error')->default(0)->comment('if error is 2 then it shop the this table job');
             $table->timestamps();
@@ -39,8 +39,7 @@ class CreateLogApiTable extends Migration
     public function down()
     {
 
-        Schema::table('api_logs', function ($table) {
-        });
+        Schema::table('api_logs', function ($table) {});
 
         Schema::dropIfExists('api_logs');
     }

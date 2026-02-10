@@ -1,8 +1,8 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-use \App\Models\Setting;
 
 class OrderDetail extends Model
 {
@@ -16,11 +16,12 @@ class OrderDetail extends Model
      * @var array
      */
     protected $fillable = [
-        'order_id', 'product_id', 'cost_price', 'sale_price', 'qty', 'variations', 'extras'
+        'order_id', 'product_id', 'cost_price', 'sale_price', 'qty', 'variations', 'extras',
     ];
 
     /**
      * The attributes that should be cast.
+     *
      * @var array
      */
     protected $casts = [
@@ -35,31 +36,33 @@ class OrderDetail extends Model
 
     public function getItemSalePriceAttribute()
     {
-        return $this->sale_price . ' '.Setting::$DEFAULT_CURRENCY;
+        return $this->sale_price.' '.Setting::$DEFAULT_CURRENCY;
     }
 
     public function getItemSubTotalAttribute()
     {
-        $total = ($this->cost_price*$this->qty);
+        $total = ($this->cost_price * $this->qty);
 
-        return $total . ' '.Setting::$DEFAULT_CURRENCY;
+        return $total.' '.Setting::$DEFAULT_CURRENCY;
     }
 
-    public function getExtraDetailAttribute() {
+    public function getExtraDetailAttribute()
+    {
         return $this->extras ?? null;
     }
 
-    public function getItemVideoVaultAttribute() {
+    public function getItemVideoVaultAttribute()
+    {
         return $this->product;
     }
 
-    public function product() {
-        return $this->belongsTo( StripeProductPrice::class );
+    public function product()
+    {
+        return $this->belongsTo(StripeProductPrice::class);
     }
 
-    public function order() {
-        return $this->belongsTo( Order::class );
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
     }
-
-
 }

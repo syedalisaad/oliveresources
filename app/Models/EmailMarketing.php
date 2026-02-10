@@ -9,6 +9,5 @@ class EmailMarketing extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email', 'company', 'phone', 'designation','in_verified'];
-
+    protected $fillable = ['email', 'company', 'phone', 'designation', 'in_verified'];
 }

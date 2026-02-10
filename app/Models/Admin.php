@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,8 +14,7 @@ class Admin extends Authenticatable
 
     protected $guard = 'admin';
 
-
-    #protected $guarded = ['web'];
+    // protected $guarded = ['web'];
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +22,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'gender', 'email', 'password', 'phone', 'age', 'source_image', 'ip_address', 'verifytoken', 'user_type', 'extras'
+        'first_name', 'last_name', 'gender', 'email', 'password', 'phone', 'age', 'source_image', 'ip_address', 'verifytoken', 'user_type', 'extras',
     ];
 
     /**
@@ -37,9 +38,9 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'extras'            => 'array',
+        'extras' => 'array',
         'email_verified_at' => 'datetime',
-        'created_at'        => 'date:Y-m-d h:i:s',
-        'updated_at'        => 'date:Y-m-d h:i:s',
+        'created_at' => 'date:Y-m-d h:i:s',
+        'updated_at' => 'date:Y-m-d h:i:s',
     ];
 }

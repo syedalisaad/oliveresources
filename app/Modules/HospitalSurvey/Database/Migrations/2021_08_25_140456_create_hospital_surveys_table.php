@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateHospitalSurveysTable extends Migration
 {
-
     /*
      *
 ALTER TABLE `patient_survey` ADD INDEX(`patient_survey_star_rating`);
@@ -34,9 +33,9 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
      */
     public function up()
     {
-        //Hospital General Information - Hospital [ Table - "b2dda626-82d6-5be9-8fb6-cae92dd21248" ]
-        //Timely and Effective Care - Hospital [ Table - "cce912ad-182c-593c-882c-1d6395a09617" ]
-        //Patient survey (HCAHPS) - Hospital [ Table - "cb0e589e-e78b-541c-baa9-a8a4857cfa17" ]
+        // Hospital General Information - Hospital [ Table - "b2dda626-82d6-5be9-8fb6-cae92dd21248" ]
+        // Timely and Effective Care - Hospital [ Table - "cce912ad-182c-593c-882c-1d6395a09617" ]
+        // Patient survey (HCAHPS) - Hospital [ Table - "cb0e589e-e78b-541c-baa9-a8a4857cfa17" ]
         Schema::create('hospitals', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('facility_id', 50)->index();
@@ -66,9 +65,9 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
 
             $table->index(['created_at', 'updated_at', 'deleted_at']);
 
-            //TODO::cascade issue
-            //Constraint
-//            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            // TODO::cascade issue
+            // Constraint
+            //            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
         });
 
         /*
@@ -80,7 +79,7 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
         Schema::create('patient_infections', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('facility_id', 50)->index()->nullable();
-            $table->string('facility_name')->nullable();;
+            $table->string('facility_name')->nullable();
             $table->string('measure_id', 50)->index();
             $table->string('measure_name');
             $table->string('compared_to_national')->nullable();
@@ -90,10 +89,10 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
             $table->date('end_date')->nullable();
             $table->string('type_of', 20)->default(null)->comment('Hospital=hospital, National=national, State=state etc');
             $table->timestamps();
-            //TODO::cascade issue
+            // TODO::cascade issue
 
-            //Constraint
-//            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
+            // Constraint
+            //            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
         });
         /*
          * Patient survey (HCAHPS) (Patient Satisfaction/Experience) - Hospital
@@ -104,7 +103,7 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
         Schema::create('patient_survey', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('facility_id', 50)->index()->nullable();
-            $table->string('facility_name')->nullable();;
+            $table->string('facility_name')->nullable();
             $table->string('measure_id', 50)->index();
             $table->string('measure_name');
             $table->string('patient_survey_star_rating')->nullable();
@@ -119,10 +118,10 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
             $table->string('type_of', 20)->default(null)->comment('Hospital=hospital, National=national, State=state etc');
 
             $table->timestamps();
-            //TODO::cascade issue
+            // TODO::cascade issue
 
-            //Constraint
-//            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
+            // Constraint
+            //            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
         });
 
         /*
@@ -134,7 +133,7 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
         Schema::create('patient_complication_and_death', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('facility_id', 50)->index()->nullable();
-            $table->string('facility_name')->nullable();;
+            $table->string('facility_name')->nullable();
             $table->string('measure_id', 50)->index();
             $table->string('measure_name');
             $table->string('compared_to_national')->nullable();
@@ -150,12 +149,11 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
             $table->string('type_of', 20)->default(null)->comment('Hospital=hospital, National=national, State=state etc');
 
             $table->timestamps();
-            //TODO::cascade issue
+            // TODO::cascade issue
 
-            //Constraint
-//            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
+            // Constraint
+            //            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
         });
-
 
         /*
         * Patient Unplanned Hospital Visits (Patient Readmission) - Hospital
@@ -166,12 +164,12 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
         Schema::create('patient_unplanned_visit', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('facility_id', 50)->index()->nullable();
-            $table->string('facility_name')->nullable();;
+            $table->string('facility_name')->nullable();
             $table->string('measure_id', 50)->index();
             $table->string('measure_name');
             $table->string('score', 50)->nullable();
             $table->string('compared_to_national')->nullable();
-            $table->float('number_of_patients',50)->nullable();
+            $table->float('number_of_patients', 50)->nullable();
             $table->float('number_of_patients_returned')->nullable();
             $table->float('number_of_hospitals_fewer', 50)->nullable();
             $table->float('number_of_hospitals_average', 50)->nullable();
@@ -183,10 +181,10 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
             $table->string('type_of', 20)->default(null)->comment('Hospital=hospital, National=national, State=state etc');
 
             $table->timestamps();
-            //TODO::cascade issue
+            // TODO::cascade issue
 
-            //Constraint
-//            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
+            // Constraint
+            //            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
         });
 
         /*
@@ -208,9 +206,9 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
             $table->string('type_of', 20)->default(null)->comment('Hospital=hospital, National=national, State=state etc');
 
             $table->timestamps();
-    //TODO::cascade issue
-            //Constraint
-//            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
+            // TODO::cascade issue
+            // Constraint
+            //            $table->foreign('hospital_id')->references('id')->on('hospitals')->onDelete('cascade');
         });
     }
 
@@ -223,21 +221,21 @@ ALTER TABLE `patient_unplanned_visit` ADD INDEX(`measure_id`);
     {
 
         Schema::table('patient_timely_and_effective_care', function ($table) {
-//            $table->dropForeign('patient_timely_and_effective_care_hospital_id_foreign');
+            //            $table->dropForeign('patient_timely_and_effective_care_hospital_id_foreign');
         });
         Schema::table('patient_unplanned_visit', function ($table) {
-//            $table->dropForeign('patient_unplanned_visit_hospital_id_foreign');
+            //            $table->dropForeign('patient_unplanned_visit_hospital_id_foreign');
         });
         Schema::table('patient_complication_and_death', function ($table) {
-//            $table->dropForeign('patient_complication_and_death_hospital_id_foreign');
+            //            $table->dropForeign('patient_complication_and_death_hospital_id_foreign');
         });
 
         Schema::table('patient_survey', function ($table) {
-//            $table->dropForeign('patient_survey_hospital_id_foreign');
+            //            $table->dropForeign('patient_survey_hospital_id_foreign');
         });
 
         Schema::table('patient_infections', function ($table) {
-//            $table->dropForeign('patient_infections_hospital_id_foreign');
+            //            $table->dropForeign('patient_infections_hospital_id_foreign');
         });
 
         Schema::dropIfExists('patient_timely_and_effective_care');

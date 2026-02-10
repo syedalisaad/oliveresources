@@ -15,7 +15,7 @@ class CreateEmailCampaignsTable extends Migration
     {
         Schema::create('email_campaigns', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger('campaign_id');
             $table->foreign('campaign_id')->references('id')->on('campaigns')->onDelete('cascade');
             $table->unsignedBigInteger('email_marketing_id');

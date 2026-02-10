@@ -28,24 +28,24 @@ class PatientInfection extends Model
 
     public function getScoreClassAttribute()
     {
-        switch ( trim($this->compared_to_national) )
-        {
+        switch (trim($this->compared_to_national)) {
             case 'Better than the National Benchmark':
                 return 'greenbtn';
-            break;
+                break;
             case 'No Different than National Benchmark':
                 return 'yellowbtn';
-            break;
+                break;
             case 'Worse than the National Benchmark':
                 return 'redbtn';
-            break;
+                break;
             default:
                 return 'silverbtn';
-            break;
+                break;
         }
     }
 
-    public function getFootnoteScoreNotAvailableAttribute(){
-        return $this->score!='Not Available'?$this->footnote:"<ul><li>Results are not available for this reporting period.</li></ul>";
+    public function getFootnoteScoreNotAvailableAttribute()
+    {
+        return $this->score != 'Not Available' ? $this->footnote : '<ul><li>Results are not available for this reporting period.</li></ul>';
     }
 }

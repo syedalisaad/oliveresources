@@ -1,11 +1,11 @@
-<?php namespace App\Modules\Page\Controllers\Backend;
+<?php
+
+namespace App\Modules\Page\Controllers\Backend;
 
 use App\Models\Page;
-
-use Illuminate\Http\Request;
 use App\Modules\Page\Request\PageRequest;
-
 use DataTables;
+use Illuminate\Http\Request;
 
 class PageController extends \App\Http\Controllers\AdminController
 {
@@ -13,7 +13,8 @@ class PageController extends \App\Http\Controllers\AdminController
 
     public $module = 'Page';
 
-    public function __construct( \App\Modules\Page\Respository\PageRespository $page_respository ) {
+    public function __construct(\App\Modules\Page\Respository\PageRespository $page_respository)
+    {
         $this->repo_service = $page_respository;
     }
 
@@ -24,11 +25,11 @@ class PageController extends \App\Http\Controllers\AdminController
      */
     public function index()
     {
-        if( TRUE !== (isAdmin() || (bool) getAuth()->can(\Perms::$PAGE['LIST'])) ) {
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$PAGE['LIST']))) {
             abort(403, "You don't have permission to view this page");
         }
 
-        return view( admin_module_view( 'manage', $this->module ) );
+        return view(admin_module_view('manage', $this->module));
     }
 
     public function ajaxManageable()
@@ -36,33 +37,32 @@ class PageController extends \App\Http\Controllers\AdminController
         $data = Page::latest();
 
         return Datatables::of($data)
-        ->addColumn('action', function($row){
-            $action = '';
-            if ( isAdmin() || getAuth()->can( \Perms::$PAGE['UPDATE'] ) ) {
-                $action .= '<a href="' . route( admin_route( 'page.edit' ), [ $row->id ] ) . '" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a> ';
-            }
-
-            if( isAdmin() || getAuth()->can(\Perms::$PAGE['DELETE']) )
-            {
-                if ( !$row->is_lock ) {
-                    $action .= '<a href="javascript:void(0)" data-href="' . route( admin_route( 'page.delete' ), [ $row->id ] ) . '" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>';
+            ->addColumn('action', function ($row) {
+                $action = '';
+                if (isAdmin() || getAuth()->can(\Perms::$PAGE['UPDATE'])) {
+                    $action .= '<a href="'.route(admin_route('page.edit'), [$row->id]).'" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a> ';
                 }
-            }
 
-            return $action?:'-';
-        })
-        ->addIndexColumn()
-        ->filterColumn('is_active', function($query, $keyword) {
-            $query->where( 'is_active', (int) (strpos('active', strtolower($keyword)) !== false));
-        })
-        ->editColumn('is_active', function($row) {
-            return $row->status;
-        })
-        ->editColumn('created_at', function($row) {
-            return admin_datetime_format($row->created_at, true);
-        })
-        ->rawColumns(['action', 'source_header'])
-        ->make(true);
+                if (isAdmin() || getAuth()->can(\Perms::$PAGE['DELETE'])) {
+                    if (! $row->is_lock) {
+                        $action .= '<a href="javascript:void(0)" data-href="'.route(admin_route('page.delete'), [$row->id]).'" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>';
+                    }
+                }
+
+                return $action ?: '-';
+            })
+            ->addIndexColumn()
+            ->filterColumn('is_active', function ($query, $keyword) {
+                $query->where('is_active', (int) (strpos('active', strtolower($keyword)) !== false));
+            })
+            ->editColumn('is_active', function ($row) {
+                return $row->status;
+            })
+            ->editColumn('created_at', function ($row) {
+                return admin_datetime_format($row->created_at, true);
+            })
+            ->rawColumns(['action', 'source_header'])
+            ->make(true);
     }
 
     /**
@@ -72,11 +72,11 @@ class PageController extends \App\Http\Controllers\AdminController
      */
     public function create()
     {
-        if( TRUE !== (isAdmin() || (bool) getAuth()->can(\Perms::$PAGE['ADD'])) ) {
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$PAGE['ADD']))) {
             abort(403, "You don't have permission to view this page");
         }
 
-        return view( admin_module_view( 'form', $this->module ) );
+        return view(admin_module_view('form', $this->module));
     }
 
     /**
@@ -87,16 +87,17 @@ class PageController extends \App\Http\Controllers\AdminController
      */
     public function store(PageRequest $request)
     {
-        $this->repo_service->createOrUpdate( $request, new Page );
+        $this->repo_service->createOrUpdate($request, new Page);
 
-        //Redirection when you choose button
+        // Redirection when you choose button
         $route_action = route(admin_route($request->formsubmit));
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully added'
+            'message' => 'Record has been successfully added',
         ]);
-        return redirect( $route_action );
+
+        return redirect($route_action);
     }
 
     /**
@@ -107,13 +108,13 @@ class PageController extends \App\Http\Controllers\AdminController
      */
     public function edit($find_id)
     {
-        if( TRUE !== (isAdmin() || (bool) getAuth()->can(\Perms::$PAGE['UPDATE'])) ) {
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$PAGE['UPDATE']))) {
             abort(403, "You don't have permission to view this page");
         }
 
         $data = Page::findOrFail($find_id);
 
-        return view( admin_module_view( 'form', $this->module ), compact('data') );
+        return view(admin_module_view('form', $this->module), compact('data'));
     }
 
     /**
@@ -127,13 +128,14 @@ class PageController extends \App\Http\Controllers\AdminController
     {
         $model = Page::findOrFail($find_id);
 
-        $this->repo_service->createOrUpdate( $request, $model );
+        $this->repo_service->createOrUpdate($request, $model);
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully updated'
+            'message' => 'Record has been successfully updated',
         ]);
-        return redirect()->route( admin_route('page.index') );
+
+        return redirect()->route(admin_route('page.index'));
     }
 
     /**
@@ -144,17 +146,17 @@ class PageController extends \App\Http\Controllers\AdminController
      */
     public function destroy(Request $request, $id)
     {
-        if( TRUE !== (isAdmin() || (bool) getAuth()->can(\Perms::$PAGE['DELETE'])) ) {
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$PAGE['DELETE']))) {
             abort(403, "You don't have permission to view this page");
         }
 
         $page = Page::findOrFail($id);
-        $page = $this->repo_service->removeExistsResource( $page );
+        $page = $this->repo_service->removeExistsResource($page);
         $page->delete();
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully deleted'
+            'message' => 'Record has been successfully deleted',
         ]);
 
         return redirect()->route(admin_route('page.index'));
@@ -163,12 +165,12 @@ class PageController extends \App\Http\Controllers\AdminController
     public function deleteSource(Request $request, $id)
     {
         $page = Page::findOrFail($id);
-        $page = $this->repo_service->removeExistsResource( $page );
+        $page = $this->repo_service->removeExistsResource($page);
         $page->save();
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Source has been successfully deleted'
+            'message' => 'Source has been successfully deleted',
         ]);
 
         return redirect()->route(admin_route('page.edit'), $id);

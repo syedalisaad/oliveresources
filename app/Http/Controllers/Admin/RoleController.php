@@ -1,24 +1,24 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
 
-#use App\Models\Role;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+namespace App\Http\Controllers\Admin;
 
-#use App\Support\Services\RoleService;
-
-use Illuminate\Http\Request;
+// use App\Models\Role;
 use App\Http\Requests\Admin\RoleRequest;
+// use App\Support\Services\RoleService;
 
 use DataTables;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends \App\Http\Controllers\AdminController
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -27,13 +27,13 @@ class RoleController extends \App\Http\Controllers\AdminController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request )
+    public function index(Request $request)
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$ROLE['LIST'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$ROLE['LIST']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
-        return view( admin_view( 'roles.manage' ) );
+        return view(admin_view('roles.manage'));
     }
 
     public function ajaxManageable()
@@ -41,29 +41,29 @@ class RoleController extends \App\Http\Controllers\AdminController
         $data = Role::all();
 
         return Datatables::of($data)
-        ->addColumn('action', function($row){
+            ->addColumn('action', function ($row) {
 
-            $action = '';
+                $action = '';
 
-            if( isAdmin() || getAuth()->can(\Perms::$ROLE['UPDATE']) ) {
-                $action .= '<a href="'.route(admin_route('role.edit'), [$row->id]).'" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a> ';
-            }
+                if (isAdmin() || getAuth()->can(\Perms::$ROLE['UPDATE'])) {
+                    $action .= '<a href="'.route(admin_route('role.edit'), [$row->id]).'" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a> ';
+                }
 
-            if( isAdmin() || getAuth()->can(\Perms::$ROLE['DELETE']) ) {
-                $action .= '<a href="javascript:void(0)" data-href="'.route(admin_route('role.delete'), [$row->id]).'" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>';
-            }
+                if (isAdmin() || getAuth()->can(\Perms::$ROLE['DELETE'])) {
+                    $action .= '<a href="javascript:void(0)" data-href="'.route(admin_route('role.delete'), [$row->id]).'" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>';
+                }
 
-            return $action?:'-';
-        })
-        ->addIndexColumn()
-        ->addColumn( 'permissions', function( $row ) {
-            return $row->permissions->pluck('name')->implode('<br/>');
-        })
-        ->editColumn('created_at', function($row) {
-            return admin_datetime_format($row->created_at, true);
-        })
-        ->rawColumns(['action', 'permissions'])
-        ->make(true);
+                return $action ?: '-';
+            })
+            ->addIndexColumn()
+            ->addColumn('permissions', function ($row) {
+                return $row->permissions->pluck('name')->implode('<br/>');
+            })
+            ->editColumn('created_at', function ($row) {
+                return admin_datetime_format($row->created_at, true);
+            })
+            ->rawColumns(['action', 'permissions'])
+            ->make(true);
     }
 
     /**
@@ -73,11 +73,11 @@ class RoleController extends \App\Http\Controllers\AdminController
      */
     public function create()
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$ROLE['ADD'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$ROLE['ADD']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
-        return view( admin_view('roles.form') );
+        return view(admin_view('roles.form'));
     }
 
     /**
@@ -90,18 +90,18 @@ class RoleController extends \App\Http\Controllers\AdminController
     {
         $role = Role::create(['name' => $request->name]);
 
-        $permissions = array_filter( $request->permissions );
-        $role->syncPermissions( $permissions );
+        $permissions = array_filter($request->permissions);
+        $role->syncPermissions($permissions);
 
-        //Redirection when you choose button
+        // Redirection when you choose button
         $route_action = route(admin_route($request->formsubmit));
 
-        $request->session()->flash( 'alert-message', [
-            'status'  => 'success',
-            'message' => 'Record has been successfully added'
+        $request->session()->flash('alert-message', [
+            'status' => 'success',
+            'message' => 'Record has been successfully added',
         ]);
 
-        return redirect( $route_action );
+        return redirect($route_action);
     }
 
     /**
@@ -112,13 +112,13 @@ class RoleController extends \App\Http\Controllers\AdminController
      */
     public function edit(Role $role)
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$ROLE['UPDATE'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$ROLE['UPDATE']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
         $data = $role;
 
-        return view( admin_view('roles.form'), compact('data'));
+        return view(admin_view('roles.form'), compact('data'));
     }
 
     /**
@@ -138,8 +138,9 @@ class RoleController extends \App\Http\Controllers\AdminController
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully updated'
+            'message' => 'Record has been successfully updated',
         ]);
+
         return redirect()->route(admin_route('role.index'));
     }
 
@@ -149,18 +150,18 @@ class RoleController extends \App\Http\Controllers\AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $find_id )
+    public function destroy(Request $request, $find_id)
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$ROLE['DELETE'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$ROLE['DELETE']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
-        $delete = Role::findOrFail( $find_id );
+        $delete = Role::findOrFail($find_id);
         $delete->delete();
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully deleted'
+            'message' => 'Record has been successfully deleted',
         ]);
 
         return redirect()->route(admin_route('role.index'));

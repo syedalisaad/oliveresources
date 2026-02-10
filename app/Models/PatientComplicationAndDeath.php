@@ -28,24 +28,26 @@ class PatientComplicationAndDeath extends Model
         'start_date',
         'end_date',
     ];
+
     protected $table = 'patient_complication_and_death';
 
     public function getScoreClassAttribute()
     {
-        if ( $this->compared_to_national == 'Not Available' || $this->compared_to_national == 'Number of Cases Too Small' ) {
-            return'btn silverbtn';
-        } else if ( $this->compared_to_national == 'Better Than the National Rate' || $this->compared_to_national == 'Better Than the National Value' ) {
-            return'btn greenbtn';
-        } else if ( $this->compared_to_national == 'No Different Than the National Rate' || $this->compared_to_national == 'No Different Than the National Value' ) {
-            return'btn yellowbtn';
-        } else if ( $this->compared_to_national == 'Worse Than the National Rate' || $this->patient_survey_star_rating == 'Worse Than the National Value' ) {
-            return'btn redbtn';
+        if ($this->compared_to_national == 'Not Available' || $this->compared_to_national == 'Number of Cases Too Small') {
+            return 'btn silverbtn';
+        } elseif ($this->compared_to_national == 'Better Than the National Rate' || $this->compared_to_national == 'Better Than the National Value') {
+            return 'btn greenbtn';
+        } elseif ($this->compared_to_national == 'No Different Than the National Rate' || $this->compared_to_national == 'No Different Than the National Value') {
+            return 'btn yellowbtn';
+        } elseif ($this->compared_to_national == 'Worse Than the National Rate' || $this->patient_survey_star_rating == 'Worse Than the National Value') {
+            return 'btn redbtn';
         } else {
-            return'btn silverbtn';
+            return 'btn silverbtn';
         }
     }
 
-    public function getFootnoteScoreNotAvailableAttribute(){
-        return $this->score!='Not Available'?$this->footnote:"<ul><li>Results are not available for this reporting period.</li></ul>";
+    public function getFootnoteScoreNotAvailableAttribute()
+    {
+        return $this->score != 'Not Available' ? $this->footnote : '<ul><li>Results are not available for this reporting period.</li></ul>';
     }
 }

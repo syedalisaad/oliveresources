@@ -1,11 +1,12 @@
 <?php
+
 return [
-    "default" => [
-        'name'       => 'Name',
+    'default' => [
+        'name' => 'Name',
         'created_at' => 'Created At',
     ],
-    "manage"  => [
+    'manage' => [
         'action' => 'Action',
-        'list'   => 'Lists',
-    ]
+        'list' => 'Lists',
+    ],
 ];

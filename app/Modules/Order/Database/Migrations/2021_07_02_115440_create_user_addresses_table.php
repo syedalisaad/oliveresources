@@ -13,9 +13,8 @@ class CreateUserAddressesTable extends Migration
      */
     public function up()
     {
-        //For User Details
-        Schema::create('user_addresses', function (Blueprint $table)
-        {
+        // For User Details
+        Schema::create('user_addresses', function (Blueprint $table) {
             $table->id()->unsigned()->index();
             $table->unsignedBigInteger('user_id')->index('user_id');
             $table->string('first_name', 40);
@@ -37,7 +36,7 @@ class CreateUserAddressesTable extends Migration
 
             $table->index(['created_at', 'updated_at', 'deleted_at']);
 
-            //Constraint
+            // Constraint
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
@@ -49,8 +48,8 @@ class CreateUserAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::table( 'user_addresses', function( $table ) {
-            $table->dropForeign( 'user_addresses_user_id_foreign' );
+        Schema::table('user_addresses', function ($table) {
+            $table->dropForeign('user_addresses_user_id_foreign');
         });
 
         Schema::dropIfExists('user_addresses');

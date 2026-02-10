@@ -1,12 +1,11 @@
-<?php namespace App\Http\Controllers\Admin;
+<?php
 
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\Admin\PermissionRequest;
-
 use DataTables;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class PermissionController extends \App\Http\Controllers\AdminController
 {
@@ -15,8 +14,9 @@ class PermissionController extends \App\Http\Controllers\AdminController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request ) {
-        return view( admin_view( 'permissions.manage' ) );
+    public function index(Request $request)
+    {
+        return view(admin_view('permissions.manage'));
     }
 
     public function ajaxManageable()
@@ -24,21 +24,21 @@ class PermissionController extends \App\Http\Controllers\AdminController
         $data = Permission::all();
 
         return Datatables::of($data)
-        ->addColumn('action', function($row){
+            ->addColumn('action', function ($row) {
 
-            $actions = '
+                $actions = '
                 <a href="'.route(admin_route('permission.edit'), [$row->id]).'" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a> 
                 <a href="javascript:void(0)" data-href="'.route(admin_route('permission.delete'), [$row->id]).'" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>
              ';
 
-            return $actions;
-        })
-        ->addIndexColumn()
-        ->editColumn('created_at', function($row) {
-            return admin_datetime_format($row->created_at, true);
-        })
-        ->rawColumns(['action', 'source_image'])
-        ->make(true);
+                return $actions;
+            })
+            ->addIndexColumn()
+            ->editColumn('created_at', function ($row) {
+                return admin_datetime_format($row->created_at, true);
+            })
+            ->rawColumns(['action', 'source_image'])
+            ->make(true);
     }
 
     /**
@@ -48,7 +48,7 @@ class PermissionController extends \App\Http\Controllers\AdminController
      */
     public function create()
     {
-        return view( admin_view('permissions.form') );
+        return view(admin_view('permissions.form'));
     }
 
     /**
@@ -61,12 +61,12 @@ class PermissionController extends \App\Http\Controllers\AdminController
     {
         Permission::create(['name' => $request->name]);
 
-        $request->session()->flash( 'alert-message', [
-            'status'  => 'success',
-            'message' => 'Record has been successfully added'
+        $request->session()->flash('alert-message', [
+            'status' => 'success',
+            'message' => 'Record has been successfully added',
         ]);
 
-        return redirect()->route( admin_route( 'permission.index' ) );
+        return redirect()->route(admin_route('permission.index'));
     }
 
     /**
@@ -79,7 +79,7 @@ class PermissionController extends \App\Http\Controllers\AdminController
     {
         $data = $permission;
 
-        return view( admin_view('permissions.form'), compact('data'));
+        return view(admin_view('permissions.form'), compact('data'));
     }
 
     /**
@@ -96,8 +96,9 @@ class PermissionController extends \App\Http\Controllers\AdminController
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully updated'
+            'message' => 'Record has been successfully updated',
         ]);
+
         return redirect()->route(admin_route('permission.index'));
     }
 
@@ -107,14 +108,14 @@ class PermissionController extends \App\Http\Controllers\AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $find_id )
+    public function destroy(Request $request, $find_id)
     {
-        $delete = Permission::findOrFail( $find_id );
+        $delete = Permission::findOrFail($find_id);
         $delete->delete();
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully deleted'
+            'message' => 'Record has been successfully deleted',
         ]);
 
         return redirect()->route(admin_route('permission.index'));

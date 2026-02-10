@@ -1,4 +1,6 @@
-<?php namespace App\Support\Commands;
+<?php
+
+namespace App\Support\Commands;
 
 use Illuminate\Console\Command;
 
@@ -15,10 +17,10 @@ class ClearEverything extends Command
 
     public function handle()
     {
-        $validCommands = array('route:clear', 'cache:clear', 'view:clear', 'clear-compiled', 'config:clear', 'config:cache');
+        $validCommands = ['route:clear', 'cache:clear', 'view:clear', 'clear-compiled', 'config:clear', 'config:cache'];
 
         foreach ($validCommands as $cmd) {
-            $this->call('' . $cmd . '');
+            $this->call(''.$cmd.'');
         }
 
         print_r('Application cache cleared!');

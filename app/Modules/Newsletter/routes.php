@@ -1,5 +1,6 @@
 <?php
-Route::prefix('admin')->name('admin.')->middleware('admin')->namespace('App\Modules\Newsletter\Controllers\Backend' )->group(function() {
+
+Route::prefix('admin')->name('admin.')->middleware('admin')->namespace('App\Modules\Newsletter\Controllers\Backend')->group(function () {
 
     Route::post('newsletter/send/email', 'NewsletterController@postSendNewsletter')->name('newsletter.send');
 

@@ -1,44 +1,41 @@
-<?php namespace App\Support\Traits;
+<?php
 
-use \App\Models\Product;
-use \App\Models\Order;
-use \App\Models\OrderDetail;
+namespace App\Support\Traits;
 
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Modules\Order\Respository\OrderRespository;
 use Illuminate\Support\Facades\Auth;
-use \App\Modules\Order\Respository\OrderRespository;
-use Stripe\OrderItem;
 
-trait ShoppingCartDatabaseTrait  {
-
+trait ShoppingCartDatabaseTrait
+{
     protected $repo_order_service;
 
-	static public function addToCart( $item )
+    public static function addToCart($item)
     {
-        $quantity   = (int) ( $item['qty'] ?? 1 );
+        $quantity = (int) ($item['qty'] ?? 1);
 
-        $user       = Auth::user();
-        $carts      = $user->user_cart_orders ? $user->user_cart_orders->order_items : collect([]);
-        $exist_item = $carts->where( 'product_id', $item['product_id'] );
+        $user = Auth::user();
+        $carts = $user->user_cart_orders ? $user->user_cart_orders->order_items : collect([]);
+        $exist_item = $carts->where('product_id', $item['product_id']);
 
-        if( $exist_item->count() ){
-            //Single Item Added
+        if ($exist_item->count()) {
+            // Single Item Added
             return false;
-        }
-        else
-        {
-            (new OrderRespository(new Order))->apiCartCreateOrder( $item );
+        } else {
+            (new OrderRespository(new Order))->apiCartCreateOrder($item);
         }
 
         return true;
     }
 
-    static public function existsCartBucketItem( $item_id )
+    public static function existsCartBucketItem($item_id)
     {
-        $user         = Auth::user();
-        $shoppingcart = $user && $user->user_cart_orders ? $user->user_cart_orders->order_items : collect( [] );
+        $user = Auth::user();
+        $shoppingcart = $user && $user->user_cart_orders ? $user->user_cart_orders->order_items : collect([]);
 
-        if( 1 > $shoppingcart->count() ) {
-            return FALSE;
+        if ($shoppingcart->count() < 1) {
+            return false;
         }
 
         $exist_item = $shoppingcart->where('product_id', $item_id);
@@ -46,14 +43,14 @@ trait ShoppingCartDatabaseTrait  {
         return (bool) $exist_item->count();
     }
 
-    static public function removeCartById( $item_id )
+    public static function removeCartById($item_id)
     {
-        $user       = Auth::user();
-        $order      = $user->user_cart_orders;
-        $order_item = OrderDetail::where( [ 'order_id' => $order->id, 'product_id' => $item_id ] );
+        $user = Auth::user();
+        $order = $user->user_cart_orders;
+        $order_item = OrderDetail::where(['order_id' => $order->id, 'product_id' => $item_id]);
 
-        if( is_null($order_item->first()) ) {
-            return FALSE;
+        if (is_null($order_item->first())) {
+            return false;
         }
 
         $order_item->delete();
@@ -61,55 +58,53 @@ trait ShoppingCartDatabaseTrait  {
         $order->total_amount = self::getCartTotal();
         $order->save();
 
-        return TRUE;
+        return true;
     }
 
-    static public function getContent()
+    public static function getContent()
     {
-        $user  = Auth::user();
+        $user = Auth::user();
 
-        if( !$user ) {
+        if (! $user) {
             return collect([]);
         }
 
-        return ($user->user_cart_orders ? $user->user_cart_orders->order_items : collect());
+        return $user->user_cart_orders ? $user->user_cart_orders->order_items : collect();
     }
 
-    static public function destroyCart()
+    public static function destroyCart()
     {
-        $user  = Auth::user();
+        $user = Auth::user();
         $order = $user->user_cart_orders;
 
         OrderDetail::where('order_id', $order->id)->delete();
 
-        return TRUE;
+        return true;
     }
 
-    static public function getTotalTax()
+    public static function getTotalTax()
     {
         return 0;
     }
 
-    static public function getCartSubtotal()
+    public static function getCartSubtotal()
     {
         $carts = self::getContent();
 
-        if( $carts->count() )
-        {
-            return $carts->map(function($v){
-                return ($v['cost_price'] * $v['qty']);
+        if ($carts->count()) {
+            return $carts->map(function ($v) {
+                return $v['cost_price'] * $v['qty'];
             })->sum();
         }
 
         return 0;
     }
 
-    static public function getCartTotal()
+    public static function getCartTotal()
     {
         $carts = self::getContent();
 
-        if( $carts->count() )
-        {
+        if ($carts->count()) {
             $sub_total = self::getCartSubtotal();
 
             return $sub_total;
@@ -118,7 +113,7 @@ trait ShoppingCartDatabaseTrait  {
         return 0;
     }
 
-    static public function getCartTotalItems()
+    public static function getCartTotalItems()
     {
         $carts = self::getContent();
 

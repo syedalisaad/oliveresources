@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Admin;
+<?php
+
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,18 +13,17 @@ class PermissionRequest extends FormRequest
      */
     public function rules()
     {
-        $item_id = \Request::segment( 3 );
+        $item_id = \Request::segment(3);
 
         $rules = [
-            //'role_id' => 'required',
-            'name'    => 'required|max:255|unique:\Spatie\Permission\Models\Role,name',
+            // 'role_id' => 'required',
+            'name' => 'required|max:255|unique:\Spatie\Permission\Models\Role,name',
         ];
 
-        switch ( $this->method() )
-        {
+        switch ($this->method()) {
             case 'PUT':
-                $rules['name'] = 'required|max:255|unique:\Spatie\Permission\Models\Role,name,' . $item_id;
-            break;
+                $rules['name'] = 'required|max:255|unique:\Spatie\Permission\Models\Role,name,'.$item_id;
+                break;
         }
 
         return $rules;

@@ -13,17 +13,16 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table)
-        {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('name');
             $table->string('slug')->index('slug');
             $table->mediumText('short_desc')->nullable();
             $table->longText('description');
-            $table->string( 'source_image', 100 )->nullable();
+            $table->string('source_image', 100)->nullable();
             $table->json('extras')->nullable();
-            $table->tinyInteger('is_active')->default(1)->index('is_active')->comment('1=Active, 0=In-Active'); //[1=Active, 0=In-Active]
-            $table->string( 'type_of', 20 )->default('post')->comment('Posts=post, Blogs=blog etc');
+            $table->tinyInteger('is_active')->default(1)->index('is_active')->comment('1=Active, 0=In-Active'); // [1=Active, 0=In-Active]
+            $table->string('type_of', 20)->default('post')->comment('Posts=post, Blogs=blog etc');
             $table->json('seo_metadata');
             $table->timestamps();
             $table->softDeletes();
@@ -31,18 +30,17 @@ class CreatePostsTable extends Migration
             $table->index(['created_at', 'updated_at', 'deleted_at']);
         });
 
-        Schema::create('post_tags', function (Blueprint $table)
-        {
+        Schema::create('post_tags', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->unsignedInteger('post_id')->index('post_id');
             $table->string('tag_name', 50);
             $table->string('tag_slug', 70)->index('tag_slug');
 
-            //Constraint
+            // Constraint
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-       });
+        });
 
-        //Relationship has many "Post - Blog Categories"
+        // Relationship has many "Post - Blog Categories"
         /*Schema::create( 'post_blog_categories', function( Blueprint $table )
         {
             $table->increments('id')->index();
@@ -67,11 +65,11 @@ class CreatePostsTable extends Migration
             $table->dropForeign( 'post_blog_categories_category_id_foreign' );
         });*/
 
-        Schema::table( 'post_tags', function( $table ) {
-            $table->dropForeign( 'post_tags_post_id_foreign' );
+        Schema::table('post_tags', function ($table) {
+            $table->dropForeign('post_tags_post_id_foreign');
         });
 
-        //Schema::dropIfExists('post_blog_categories');
+        // Schema::dropIfExists('post_blog_categories');
         Schema::dropIfExists('post_tags');
         Schema::dropIfExists('posts');
     }

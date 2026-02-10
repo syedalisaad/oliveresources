@@ -1,68 +1,69 @@
-<?php namespace App\Modules\EmailMarketing\Controllers\Backend;
+<?php
+
+namespace App\Modules\EmailMarketing\Controllers\Backend;
 
 use App\Models\EmailTemplate;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Http\Request;
 use App\Modules\EmailMarketing\Request\EmailTemplateRequest;
-
 use DataTables;
+use Illuminate\Http\Request;
 
 class EmailTemplateController extends \App\Http\Controllers\AdminController
 {
     protected $repo_service;
 
     public $module = 'EmailMarketing';
+
     public $view = 'Template.';
 
-    public function __construct( \App\Modules\EmailMarketing\Respository\EmailTemplateRespository $blog_respository ) {
+    public function __construct(\App\Modules\EmailMarketing\Respository\EmailTemplateRespository $blog_respository)
+    {
         $this->repo_service = $blog_respository;
     }
 
     public function index()
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$BLOG['LIST'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$BLOG['LIST']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
-        return view( admin_module_view(  $this->view.'manage', $this->module ) );
+        return view(admin_module_view($this->view.'manage', $this->module));
     }
 
-    public function ajaxManageable( Request $request)
+    public function ajaxManageable(Request $request)
     {
-        $sort_cols  = getColsByDataable( $request->input( 'columns' ), 'action' );
-        $order_cols = ( $sort_cols[ $request->input( 'order.0.column' ) ] ?? 'created_at' );
-        $order_by   = ( $request->input( 'order.0.dir' ) ?: 'desc' );
+        $sort_cols = getColsByDataable($request->input('columns'), 'action');
+        $order_cols = ($sort_cols[$request->input('order.0.column')] ?? 'created_at');
+        $order_by = ($request->input('order.0.dir') ?: 'desc');
 
-        $data = EmailTemplate::orderBy($order_cols,$order_by)->orderByDesc('updated_at');
+        $data = EmailTemplate::orderBy($order_cols, $order_by)->orderByDesc('updated_at');
 
         return Datatables::of($data)
-        ->addColumn('action', function($row){
+            ->addColumn('action', function ($row) {
 
-            $action = '';
-            if( isAdmin() || getAuth()->can(\Perms::$BLOG['UPDATE']) ) {
-                $action .= '<a href="'.route(admin_route('email-template.edit'), [$row->id]).'" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a> ';
-            }
+                $action = '';
+                if (isAdmin() || getAuth()->can(\Perms::$BLOG['UPDATE'])) {
+                    $action .= '<a href="'.route(admin_route('email-template.edit'), [$row->id]).'" class="btn btn-success btn-sm"><i class="fas fa-pencil-alt"></i></a> ';
+                }
 
-            if( isAdmin() || getAuth()->can(\Perms::$BLOG['DELETE']) ) {
-                $action .= '<a href="javascript:void(0)" data-href="'.route(admin_route('email-template.delete'), [$row->id]).'" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>';
-            }
+                if (isAdmin() || getAuth()->can(\Perms::$BLOG['DELETE'])) {
+                    $action .= '<a href="javascript:void(0)" data-href="'.route(admin_route('email-template.delete'), [$row->id]).'" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>';
+                }
 
-            if ( $row->post_url ) {
-                $action .= ' <a href="'.$row->post_url.'" target="_blank" class="btn btn-info btn-sm "><i class="fas fa-desktop"></i></a>';
-            }
+                if ($row->post_url) {
+                    $action .= ' <a href="'.$row->post_url.'" target="_blank" class="btn btn-info btn-sm "><i class="fas fa-desktop"></i></a>';
+                }
 
-            return $action?:'-';
-        })
-        ->addIndexColumn()
-        ->editColumn('created_at', function($row) {
-            return admin_datetime_format($row->created_at, true);
-        })
-        ->editColumn('body', function($row) {
-            return html_entity_decode($row->body);
-        })
-        ->rawColumns(['action','body'])
-        
-        ->make(true);
+                return $action ?: '-';
+            })
+            ->addIndexColumn()
+            ->editColumn('created_at', function ($row) {
+                return admin_datetime_format($row->created_at, true);
+            })
+            ->editColumn('body', function ($row) {
+                return html_entity_decode($row->body);
+            })
+            ->rawColumns(['action', 'body'])
+            ->make(true);
     }
 
     /**
@@ -72,11 +73,11 @@ class EmailTemplateController extends \App\Http\Controllers\AdminController
      */
     public function create()
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$BLOG['ADD'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$BLOG['ADD']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
-        return view( admin_module_view(  $this->view.'form', $this->module ) );
+        return view(admin_module_view($this->view.'form', $this->module));
     }
 
     /**
@@ -87,16 +88,17 @@ class EmailTemplateController extends \App\Http\Controllers\AdminController
      */
     public function store(EmailTemplateRequest $request)
     {
-        $this->repo_service->createOrUpdate( $request, new EmailTemplate );
+        $this->repo_service->createOrUpdate($request, new EmailTemplate);
 
-        //Redirection when you choose button
+        // Redirection when you choose button
         $route_action = route(admin_route($request->formsubmit));
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully added'
+            'message' => 'Record has been successfully added',
         ]);
-        return redirect( $route_action );
+
+        return redirect($route_action);
     }
 
     /**
@@ -107,13 +109,13 @@ class EmailTemplateController extends \App\Http\Controllers\AdminController
      */
     public function edit($find_id)
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$BLOG['UPDATE'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$BLOG['UPDATE']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
         $data = EmailTemplate::findOrFail($find_id);
 
-        return view( admin_module_view( $this->view.'form', $this->module ), compact('data') );
+        return view(admin_module_view($this->view.'form', $this->module), compact('data'));
     }
 
     /**
@@ -127,20 +129,20 @@ class EmailTemplateController extends \App\Http\Controllers\AdminController
     {
         $model = EmailTemplate::findOrFail($find_id);
 
-        $this->repo_service->createOrUpdate( $request, $model );
+        $this->repo_service->createOrUpdate($request, $model);
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully updated'
+            'message' => 'Record has been successfully updated',
         ]);
-        return redirect()->route( admin_route('email-template.index') );
+
+        return redirect()->route(admin_route('email-template.index'));
     }
 
-
-    public function destroy(Request $request, $id )
+    public function destroy(Request $request, $id)
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$BLOG['DELETE'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$BLOG['DELETE']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
         $delete = EmailTemplate::findOrFail($id);
@@ -148,10 +150,9 @@ class EmailTemplateController extends \App\Http\Controllers\AdminController
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully deleted'
+            'message' => 'Record has been successfully deleted',
         ]);
-        return redirect( route(admin_route('email-template.index')) );
+
+        return redirect(route(admin_route('email-template.index')));
     }
-
-
 }

@@ -10,6 +10,7 @@ class PatientSurvey extends Model
     use HasFactory;
 
     protected $table = 'patient_survey';
+
     protected $fillable = [
         'facility_id',
         'facility_name',
@@ -29,30 +30,30 @@ class PatientSurvey extends Model
 
     public function getStarClassAttribute()
     {
-        switch ( $this->patient_survey_star_rating )
-        {
+        switch ($this->patient_survey_star_rating) {
             case 1:
                 return 'redstar';
-            break;
+                break;
             case 2:
                 return 'orangestar';
-            break;
+                break;
             case 3:
                 return 'yellowstar';
-            break;
+                break;
             case 4:
                 return 'lemonstar';
-            break;
+                break;
             case 5:
                 return 'greenstar';
-            break;
+                break;
             default:
                 return 'silverbtn';
-            break;
+                break;
         }
     }
 
-    public function getFootnoteScoreNotAvailableAttribute(){
-        return $this->score!='Not Available'?$this->answer_percent_footnote:"<ul><li>Results are not available for this reporting period.</li></ul>";
+    public function getFootnoteScoreNotAvailableAttribute()
+    {
+        return $this->score != 'Not Available' ? $this->answer_percent_footnote : '<ul><li>Results are not available for this reporting period.</li></ul>';
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Modules\Dashboard\Controllers\Backend\DashboardController as AdminDashboardController;
 use App\Modules\Dashboard\Controllers\Frontend\DashboardController as FrontDashboardController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@ use App\Modules\Dashboard\Controllers\Frontend\DashboardController as FrontDashb
 */
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    Route::middleware(['web','admin'])->group(function () {
+    Route::middleware(['web', 'admin'])->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])
             ->name('dashboard');
 

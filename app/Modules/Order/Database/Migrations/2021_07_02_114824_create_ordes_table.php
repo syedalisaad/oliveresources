@@ -13,8 +13,7 @@ class CreateOrdesTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table)
-        {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id()->index('id');
             $table->string('user_id')->index('user_id');
             $table->decimal('coupon_amount', 8, 2)->default('0.00');
@@ -31,9 +30,8 @@ class CreateOrdesTable extends Migration
             $table->index(['created_at', 'updated_at', 'deleted_at']);
         });
 
-        //For User Details
-        Schema::create('order_details', function (Blueprint $table)
-        {
+        // For User Details
+        Schema::create('order_details', function (Blueprint $table) {
             $table->id()->unsigned()->index();
             $table->unsignedBigInteger('order_id')->index('user_id');
             $table->unsignedBigInteger('product_id')->index('product_id');
@@ -43,7 +41,7 @@ class CreateOrdesTable extends Migration
             $table->mediumText('variations')->nullable();
             $table->json('extras')->nullable();
 
-            //Constraint
+            // Constraint
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
         });
     }
@@ -55,8 +53,8 @@ class CreateOrdesTable extends Migration
      */
     public function down()
     {
-        Schema::table( 'order_details', function( $table ) {
-            $table->dropForeign( 'order_details_order_id_foreign' );
+        Schema::table('order_details', function ($table) {
+            $table->dropForeign('order_details_order_id_foreign');
         });
 
         Schema::dropIfExists('order_details');

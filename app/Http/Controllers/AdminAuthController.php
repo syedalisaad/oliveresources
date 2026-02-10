@@ -1,16 +1,13 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use DB;
+namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
-use \App\Models\User;
-use \App\Models\UserDetail;
-
+use App\Models\User;
 use App\Support\Repository\UserRepository;
-use Illuminate\Support\Facades\Log; 
+use DB;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AdminAuthController extends \App\Http\Controllers\AdminController
 {
@@ -32,17 +29,18 @@ class AdminAuthController extends \App\Http\Controllers\AdminController
      *
      * @var string
      */
-    protected $redirectTo   = '/admin/dashboard';
+    protected $redirectTo = '/admin/dashboard';
 
-    protected $mguards      = 'admin';
+    protected $mguards = 'admin';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct() {
-        $this->redirectTo = route( admin_route('dashboard') );
+    public function __construct()
+    {
+        $this->redirectTo = route(admin_route('dashboard'));
     }
 
     /**
@@ -52,17 +50,16 @@ class AdminAuthController extends \App\Http\Controllers\AdminController
      */
     public function showLoginForm()
     {
-        if(auth()->guard( $this->mguards )->check()) {
+        if (auth()->guard($this->mguards)->check()) {
             return redirect()->route(admin_route('dashboard'));
         }
 
-        return view( admin_view('auth.login') );
+        return view(admin_view('auth.login'));
     }
 
     /**
      * Handle a login request to the employee.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -80,8 +77,8 @@ class AdminAuthController extends \App\Http\Controllers\AdminController
             return $this->sendLockoutResponse($request);
         }
 
-        $details        = $request->only('email', 'password');
-        $is_remember    = (bool) ($request->remember ?: 0);
+        $details = $request->only('email', 'password');
+        $is_remember = (bool) ($request->remember ?: 0);
 
         $details['is_active'] = 1;
         $details['user_type'] = UserRepository::$USER_ADMIN;
@@ -100,14 +97,16 @@ class AdminAuthController extends \App\Http\Controllers\AdminController
      *
      * @return \Illuminate\Http\Response
      */
-    public function showResetForm() {
-        return view( admin_view( 'auth.reset' ) );
+    public function showResetForm()
+    {
+        return view(admin_view('auth.reset'));
     }
 
     /**
      * Show the application's Reset Password form.
      *
      * @return \Illuminate\Http\Response
+     *
      * @method POST
      */
     public function sendPasswordResetToken(Request $request)
@@ -115,29 +114,30 @@ class AdminAuthController extends \App\Http\Controllers\AdminController
         $validator = \Validator::make($request->all(), [
             'email' => 'required|email|exists:App\Models\User,email',
         ], [
-            'email.exists' => 'The email does not exist in our system.'
+            'email.exists' => 'The email does not exist in our system.',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $user   = User::whereEmail( $request->email )->first();
-        $email  = $user->email;
-        $token  = \Str::Random(60); //change 60 to any length you want
+        $user = User::whereEmail($request->email)->first();
+        $email = $user->email;
+        $token = \Str::Random(60); // change 60 to any length you want
 
         DB::table('password_resets')->insert([
             'email' => $email,
             'token' => $token,
-            'created_at' => \Carbon\Carbon::now()
+            'created_at' => \Carbon\Carbon::now(),
         ]);
 
         \Mail::to($email)->send(new \App\Modules\User\Mail\UserMail('send-reset-password', 'Reset Your Password', $user, ['token' => $token]));
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Please check your email to get reset password link!'
+            'message' => 'Please check your email to get reset password link!',
         ]);
+
         return redirect()->back();
     }
 
@@ -145,26 +145,26 @@ class AdminAuthController extends \App\Http\Controllers\AdminController
     {
         $reset = DB::table('password_resets')->whereToken($token)->first();
 
-        if( null == $reset ) {
+        if ($reset == null) {
             abort(404);
         }
 
         $user = User::whereEmail($reset->email)->first();
 
-        return view( admin_view('auth.new-password'), compact('reset', 'user') );
+        return view(admin_view('auth.new-password'), compact('reset', 'user'));
     }
 
     public function postResetNewPassword(Request $request, $token)
     {
-        $reset_builder  = DB::table('password_resets')->whereToken($token);
-        $reset_now      = $reset_builder->first();
+        $reset_builder = DB::table('password_resets')->whereToken($token);
+        $reset_now = $reset_builder->first();
 
-        if( null == $reset_now ) {
+        if ($reset_now == null) {
             abort(404);
         }
 
         $rules = \Validator::make($request->all(), [
-            'new_password'    => 'required|max:20|required_with:confirm_password|same:repeat_password',
+            'new_password' => 'required|max:20|required_with:confirm_password|same:repeat_password',
             'repeat_password' => 'required|max:20',
         ]);
 
@@ -176,25 +176,25 @@ class AdminAuthController extends \App\Http\Controllers\AdminController
         $user->password = $request->new_password;
         $user->save();
 
-        //Reset link Delete
+        // Reset link Delete
         $reset_builder->delete();
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Your password has been changed successfully.'
+            'message' => 'Your password has been changed successfully.',
         ]);
+
         return redirect()->route(admin_route('login'));
     }
 
     /**
      * Log the user out of the application.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)
     {
-        auth()->guard( $this->mguards )->logout();
+        auth()->guard($this->mguards)->logout();
 
         $request->session()->invalidate();
 

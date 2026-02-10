@@ -13,12 +13,12 @@ class CreateTypeOfModeToStripeProductsNDetails extends Migration
      */
     public function up()
     {
-        Schema::table( 'stripe_products', function( Blueprint $table ) {
-            $table->string( 'type_of_mode', 20 )->nullable()->default('sandbox')->after( 'is_active' );
+        Schema::table('stripe_products', function (Blueprint $table) {
+            $table->string('type_of_mode', 20)->nullable()->default('sandbox')->after('is_active');
         });
 
-        Schema::table( 'stripe_product_details', function( Blueprint $table ) {
-            $table->string( 'type_of_mode', 20 )->nullable()->default('sandbox')->after( 'is_active' );
+        Schema::table('stripe_product_details', function (Blueprint $table) {
+            $table->string('type_of_mode', 20)->nullable()->default('sandbox')->after('is_active');
         });
 
     }

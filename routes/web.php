@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminAuthController;
-
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,12 +38,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('logout', [AdminAuthController::class, 'logout'])->name('logout');
 
     Route::middleware('admin')->group(function () {
-        require __DIR__ . '/provider.php';
+        require __DIR__.'/provider.php';
     });
 });
 
 // Developer Routes
 Route::prefix('dev')->group(function () {
-    require __DIR__ . '/dev-commands.php';
+    require __DIR__.'/dev-commands.php';
 });
-

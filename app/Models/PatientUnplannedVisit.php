@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PatientUnplannedVisit extends Model {
+class PatientUnplannedVisit extends Model
+{
     use HasFactory;
+
     protected $table = 'patient_unplanned_visit';
+
     protected $fillable = [
         'facility_id',
         'facility_name',
@@ -34,42 +37,44 @@ class PatientUnplannedVisit extends Model {
         'number_of_hospitals_too_few',
     ];
 
-    public function getScoreClassAttribute() {
-        $compared_to_national = trim( $this->compared_to_national );
-        if ( in_array( $this->measure_id, array( 'EDAC_30_AMI', 'EDAC_30_HF', 'EDAC_30_PN' ) ) ) {
-            if ( $compared_to_national == 'Average Days per 100 Discharges' ) {
-                return "yellow";
-            } else if ( $compared_to_national == 'More Days Than Average per 100 Discharges' ) {
-                return "red";
-            } else if ( $compared_to_national == 'Fewer Days Than Average per 100 Discharges' ) {
-                return "green";
+    public function getScoreClassAttribute()
+    {
+        $compared_to_national = trim($this->compared_to_national);
+        if (in_array($this->measure_id, ['EDAC_30_AMI', 'EDAC_30_HF', 'EDAC_30_PN'])) {
+            if ($compared_to_national == 'Average Days per 100 Discharges') {
+                return 'yellow';
+            } elseif ($compared_to_national == 'More Days Than Average per 100 Discharges') {
+                return 'red';
+            } elseif ($compared_to_national == 'Fewer Days Than Average per 100 Discharges') {
+                return 'green';
             } else {
-                return "white";
+                return 'white';
             }
-        } else if ( in_array( $this->measure_id, array( 'OP_36' ) ) ) {
-            if ( $compared_to_national == 'No Different than expected' ) {
-                return "yellow";
-            } else if ( $compared_to_national == 'Worse than expected' ) {
-                return "red";
-            } else if ( $compared_to_national == 'Better than expected' ) {
-                return "green";
+        } elseif (in_array($this->measure_id, ['OP_36'])) {
+            if ($compared_to_national == 'No Different than expected') {
+                return 'yellow';
+            } elseif ($compared_to_national == 'Worse than expected') {
+                return 'red';
+            } elseif ($compared_to_national == 'Better than expected') {
+                return 'green';
             } else {
-                return "white";
+                return 'white';
             }
         } else {
-            if ( $compared_to_national == 'No Different Than the National Rate' || $compared_to_national == 'No Different Than the National Rate' ) {
-                return "yellow";
-            } else if ( $compared_to_national == 'Worse Than National Rate' || $compared_to_national == 'Worse Than the National Rate'  ) {
-                return "red";
-            } else if ( $compared_to_national == 'Better Than National Rate' || $compared_to_national == 'Better Than the National Rate'  ) {
-                return "green";
+            if ($compared_to_national == 'No Different Than the National Rate' || $compared_to_national == 'No Different Than the National Rate') {
+                return 'yellow';
+            } elseif ($compared_to_national == 'Worse Than National Rate' || $compared_to_national == 'Worse Than the National Rate') {
+                return 'red';
+            } elseif ($compared_to_national == 'Better Than National Rate' || $compared_to_national == 'Better Than the National Rate') {
+                return 'green';
             } else {
-                return "white";
+                return 'white';
             }
         }
     }
 
-    public function getFootnoteScoreNotAvailableAttribute(){
-        return $this->score!='Not Available'?$this->footnote:"<ul><li>Results are not available for this reporting period.</li></ul>";
+    public function getFootnoteScoreNotAvailableAttribute()
+    {
+        return $this->score != 'Not Available' ? $this->footnote : '<ul><li>Results are not available for this reporting period.</li></ul>';
     }
 }

@@ -1,10 +1,10 @@
-<?php namespace App\Modules\Contact\Controllers\Backend;
+<?php
 
-use Illuminate\Http\Request;
-
-use DataTables;
+namespace App\Modules\Contact\Controllers\Backend;
 
 use App\Models\Contact;
+use DataTables;
+use Illuminate\Http\Request;
 
 class ContactController extends \App\Http\Controllers\AdminController
 {
@@ -17,13 +17,13 @@ class ContactController extends \App\Http\Controllers\AdminController
      */
     public function index(Request $request)
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$CONTACT['LIST'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$CONTACT['LIST']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
-       return view(
-           admin_module_view('manage', $this->module)
-       );
+        return view(
+            admin_module_view('manage', $this->module)
+        );
     }
 
     public function getAjaxList()
@@ -31,37 +31,36 @@ class ContactController extends \App\Http\Controllers\AdminController
         $data = Contact::all();
 
         return Datatables::of($data)
-        ->addColumn('action', function($row){
+            ->addColumn('action', function ($row) {
 
-            $action = '';
+                $action = '';
 
-            if( isAdmin() || getAuth()->can(\Perms::$CONTACT['VIEW']) )
-            {
-                $action .= '<a href="javascript:void(0)" class="btn btn-success btn-sm const-show-more-details"
-                    data-name="' . $row->name . '"
-                    data-email="' . $row->email . '"
-                    data-phone="' . ( $row->phone ?: '' ) . '"
-                    data-subject="' . ( $row->subject ?: '' ) . '"
-                    data-ipaddress="' . $row->ip_address . '"
-                    data-message="' . $row->message . '"
-                    data-created="' . $row->created_at . '"
+                if (isAdmin() || getAuth()->can(\Perms::$CONTACT['VIEW'])) {
+                    $action .= '<a href="javascript:void(0)" class="btn btn-success btn-sm const-show-more-details"
+                    data-name="'.$row->name.'"
+                    data-email="'.$row->email.'"
+                    data-phone="'.($row->phone ?: '').'"
+                    data-subject="'.($row->subject ?: '').'"
+                    data-ipaddress="'.$row->ip_address.'"
+                    data-message="'.$row->message.'"
+                    data-created="'.$row->created_at.'"
                 >
                     <i class="fas fa-eye"></i>
                 </a> ';
-            }
+                }
 
-            if( isAdmin() || getAuth()->can(\Perms::$CONTACT['DELETE']) ) {
-                $action .= '<a href="javascript:void(0)" data-href="'.route(admin_route('contact.delete'), [$row->id]).'" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>';
-            }
+                if (isAdmin() || getAuth()->can(\Perms::$CONTACT['DELETE'])) {
+                    $action .= '<a href="javascript:void(0)" data-href="'.route(admin_route('contact.delete'), [$row->id]).'" class="btn btn-danger btn-sm const-del-records"><i class="fas fa-trash"></i></a>';
+                }
 
-            return $action?:'-';
-        })
-        ->addIndexColumn()
-        ->editColumn('created_at', function($row) {
-            return admin_datetime_format($row->created_at, true);
-        })
-        ->rawColumns(['action'])
-        ->make(true);
+                return $action ?: '-';
+            })
+            ->addIndexColumn()
+            ->editColumn('created_at', function ($row) {
+                return admin_datetime_format($row->created_at, true);
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
 
     /**
@@ -72,8 +71,8 @@ class ContactController extends \App\Http\Controllers\AdminController
      */
     public function destroy(Request $request, $id)
     {
-        if ( true !== ( isAdmin() || (bool) getAuth()->can( \Perms::$CONTACT['DELETE'] ) ) ) {
-            abort( 403, "You don't have permission to view this page" );
+        if (true !== (isAdmin() || (bool) getAuth()->can(\Perms::$CONTACT['DELETE']))) {
+            abort(403, "You don't have permission to view this page");
         }
 
         $contact = Contact::findOrFail($id);
@@ -81,7 +80,7 @@ class ContactController extends \App\Http\Controllers\AdminController
 
         $request->session()->flash('alert-message', [
             'status' => 'success',
-            'message'=> 'Record has been successfully deleted'
+            'message' => 'Record has been successfully deleted',
         ]);
 
         return redirect()->route(admin_route('contact.index'));

@@ -3,15 +3,12 @@
 namespace App\Modules\EmailMarketing\Respository;
 
 use App\Models\Campaign;
-
-use App\Support\Traits\{
-    UploadableTrait,
-    StorageableTrait
-};
+use App\Support\Traits\StorageableTrait;
+use App\Support\Traits\UploadableTrait;
 
 class CampaignRespository
 {
-    use UploadableTrait, StorageableTrait;
+    use StorageableTrait, UploadableTrait;
 
     private $model = null;
 
@@ -20,11 +17,11 @@ class CampaignRespository
         $this->model = $campaign;
     }
 
-
     public function createOrUpdate($request, Campaign $campaign)
     {
-        $campaign->name         = $request->name;
+        $campaign->name = $request->name;
         $campaign->save();
+
         return $campaign;
     }
 }

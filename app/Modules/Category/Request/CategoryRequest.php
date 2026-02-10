@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Category\Request;
+<?php
+
+namespace App\Modules\Category\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,20 +13,19 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        $item_id = \Request::segment( 3 );
+        $item_id = \Request::segment(3);
 
         $rules = [
-            'name'         => 'required|max:255|unique:App\Models\Category,name,NULL,id,deleted_at,NULL',
-            'parent_id'    => 'max:5',
-            'short_desc'   => 'max:250',
-            'source_image' => 'image|mimes:webp,jpeg,png,jpg,gif|max:' . env( 'IMG_MAX_SIZE', '2048' )
+            'name' => 'required|max:255|unique:App\Models\Category,name,NULL,id,deleted_at,NULL',
+            'parent_id' => 'max:5',
+            'short_desc' => 'max:250',
+            'source_image' => 'image|mimes:webp,jpeg,png,jpg,gif|max:'.env('IMG_MAX_SIZE', '2048'),
         ];
 
-        switch ( $this->method() )
-        {
+        switch ($this->method()) {
             case 'PUT':
-                $rules['name'] = 'required|max:255|unique:App\Models\Category,name,NULL,id,deleted_at,' . $item_id;
-            break;
+                $rules['name'] = 'required|max:255|unique:App\Models\Category,name,NULL,id,deleted_at,'.$item_id;
+                break;
         }
 
         return $rules;
@@ -38,7 +39,7 @@ class CategoryRequest extends FormRequest
     public function attributes()
     {
         return [
-            'source_image' => 'image'
+            'source_image' => 'image',
         ];
     }
 }

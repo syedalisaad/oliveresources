@@ -13,8 +13,7 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table)
-        {
+        Schema::create('pages', function (Blueprint $table) {
             $table->increments('id')->index();
             $table->string('name', 100);
             $table->string('slug', 120)->index('slug');

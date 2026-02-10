@@ -6,10 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class EmailMarketingRequest extends FormRequest
 {
-
-
-
-
     public function rules()
     {
         $item_id = \Request::segment(3);
@@ -26,7 +22,7 @@ class EmailMarketingRequest extends FormRequest
                 'required',
                 'email:rfc,dns',
                 function ($attribute, $value, $fail) use ($disposableDomains) {
-                    $emailDomain = substr(strrchr($value, "@"), 1); // "example.com"
+                    $emailDomain = substr(strrchr($value, '@'), 1); // "example.com"
 
                     if (in_array($emailDomain, $disposableDomains)) {
                         $fail('Disposable or temporary email addresses are not allowed.');
@@ -36,7 +32,7 @@ class EmailMarketingRequest extends FormRequest
         ];
 
         if ($this->isMethod('PUT')) {
-            $rules['email'][] = 'unique:email_marketings,email,' . $item_id;
+            $rules['email'][] = 'unique:email_marketings,email,'.$item_id;
         }
 
         return $rules;

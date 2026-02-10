@@ -1,5 +1,6 @@
 <?php
-# config/module.php
+
+// config/module.php
 return [
     'modules' => [
         'General',
@@ -19,6 +20,6 @@ return [
     ],
     'default' => [
         'General/resources/views/admin/master.blade.php',
-        'General/resources/views/frontend/master.blade.php'
-    ]
+        'General/resources/views/frontend/master.blade.php',
+    ],
 ];

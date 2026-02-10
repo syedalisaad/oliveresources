@@ -1,19 +1,20 @@
-<?php namespace App\Support\Traits;
+<?php
 
+namespace App\Support\Traits;
+
+use App\Mail\SystemMail;
 use Illuminate\Support\Facades\Mail;
-use \App\Mail\SystemMail;
 
-use App\Notification;
-//Ref: https://instamotivehunt.wordpress.com/2018/10/01/dynamic-email-template-in-laravel/
+// Ref: https://instamotivehunt.wordpress.com/2018/10/01/dynamic-email-template-in-laravel/
 
-trait EmailTrait  {
-
-    //For Buyer Create New Account - [Frontend]
-    public function notify_to_newsletter( $to_sender_email, $user, $data )
+trait EmailTrait
+{
+    // For Buyer Create New Account - [Frontend]
+    public function notify_to_newsletter($to_sender_email, $user, $data)
     {
-        $setings    = get_site_settings();
-        $template   = 'newsletter';
-        $subject    = $data['subject'] ." - ". $setings['sites']['site_name'];
+        $setings = get_site_settings();
+        $template = 'newsletter';
+        $subject = $data['subject'].' - '.$setings['sites']['site_name'];
 
         Mail::to($to_sender_email)->send(new SystemMail($template, $subject, $user, $data));
     }
@@ -30,8 +31,8 @@ trait EmailTrait  {
     *
     **/
     // For User [Admin Receive Add Postlead]
-    public function notify_postlead_for_manage( $data )
+    public function notify_postlead_for_manage($data)
     {
-        //code ...
+        // code ...
     }
 }

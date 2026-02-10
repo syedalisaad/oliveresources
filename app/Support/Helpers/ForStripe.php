@@ -1,5 +1,6 @@
 <?php
-//============================================================+
+
+// ============================================================+
 // File name    : For Stripe
 // Created At   : 2021-10
 
@@ -8,22 +9,23 @@
 // @github      : https://github.com/xunaidahmed
 // -------------------------------------------------------------------
 
-#https://cartalyst.com/manual/stripe/2.0#charges
+// https://cartalyst.com/manual/stripe/2.0#charges
 
 use App\Models\Setting;
 
-
-function getStripeConfig() {
-    return get_site_settings('payment_gateway')[Setting::$PAYMENT_GATEWAYS['STRIPE']] ?? NULL;
+function getStripeConfig()
+{
+    return get_site_settings('payment_gateway')[Setting::$PAYMENT_GATEWAYS['STRIPE']] ?? null;
 }
 
-function getStripeInitialize(){
+function getStripeInitialize()
+{
 
     $stripe_info = getStripeConfig();
 
-    if( !(isset($stripe_info['client_id'], $stripe_info['client_secret']) && $stripe_info['client_id'] && $stripe_info['client_secret']) ) {
+    if (! (isset($stripe_info['client_id'], $stripe_info['client_secret']) && $stripe_info['client_id'] && $stripe_info['client_secret'])) {
         return [
-            'payment_error' => 'You can generate API keys from the Stripe web interface'
+            'payment_error' => 'You can generate API keys from the Stripe web interface',
         ];
     }
 
@@ -31,13 +33,14 @@ function getStripeInitialize(){
     \Stripe\Stripe::setApiKey($stripe_info['client_secret']);
 }
 
-function getStripeClient(){
+function getStripeClient()
+{
 
     $stripe_info = getStripeConfig();
 
-    if( !(isset($stripe_info['client_id'], $stripe_info['client_secret']) && $stripe_info['client_id'] && $stripe_info['client_secret']) ) {
+    if (! (isset($stripe_info['client_id'], $stripe_info['client_secret']) && $stripe_info['client_id'] && $stripe_info['client_secret'])) {
         return [
-            'payment_error' => 'You can generate API keys from the Stripe web interface'
+            'payment_error' => 'You can generate API keys from the Stripe web interface',
         ];
     }
 
@@ -46,25 +49,24 @@ function getStripeClient(){
     );
 }
 
-function getStripeCustomers(){
+function getStripeCustomers()
+{
 
     $stripe_client = getStripeClient();
 
-    if( !$stripe_client instanceof Stripe\StripeClient ) {
+    if (! $stripe_client instanceof Stripe\StripeClient) {
         return $stripe_client;
     }
 
     $customers = $stripe_client->customers->all()->data;
 
-    if( count($customers) )
-    {
+    if (count($customers)) {
         $data = [];
-        foreach( $customers as $row)
-        {
+        foreach ($customers as $row) {
             $data[] = [
-                'id'      => $row->id,
-                'name'    => $row->name,
-                'email'   => $row->email,
+                'id' => $row->id,
+                'name' => $row->name,
+                'email' => $row->email,
                 'address' => $row->address,
             ];
         }
@@ -75,24 +77,23 @@ function getStripeCustomers(){
     return [];
 }
 
-function getStripeCustomerBy($value, $key = 'id'){
+function getStripeCustomerBy($value, $key = 'id')
+{
 
     $stripe_client = getStripeClient();
 
-    if( !$stripe_client instanceof Stripe\StripeClient ) {
+    if (! $stripe_client instanceof Stripe\StripeClient) {
         return $stripe_client;
     }
 
-    $customers = $stripe_client->customers->all([ $key => $value])->data;
+    $customers = $stripe_client->customers->all([$key => $value])->data;
 
-    if( count($customers) )
-    {
-        foreach( $customers as $row)
-        {
+    if (count($customers)) {
+        foreach ($customers as $row) {
             return [
-                'id'      => $row->id,
-                'name'    => $row->name,
-                'email'   => $row->email,
+                'id' => $row->id,
+                'name' => $row->name,
+                'email' => $row->email,
                 'address' => $row->address,
             ];
         }
@@ -101,12 +102,11 @@ function getStripeCustomerBy($value, $key = 'id'){
     return null;
 }
 
-function getStripeInvoiceById( $invoice_id )
+function getStripeInvoiceById($invoice_id)
 {
     $stripe_client = getStripeClient();
 
-    if( $stripe_client instanceof Stripe\StripeClient )
-    {
+    if ($stripe_client instanceof Stripe\StripeClient) {
         $invoice = $stripe_client->invoices->retrieve($invoice_id);
 
         return $invoice->hosted_invoice_url;
@@ -115,12 +115,11 @@ function getStripeInvoiceById( $invoice_id )
     return $stripe_client['payment_error'];
 }
 
-function getStripeInvoiceInfoById( $invoice_id )
+function getStripeInvoiceInfoById($invoice_id)
 {
     $stripe_client = getStripeClient();
 
-    if( $stripe_client instanceof Stripe\StripeClient )
-    {
+    if ($stripe_client instanceof Stripe\StripeClient) {
         $invoice = $stripe_client->invoices->retrieve($invoice_id);
 
         return $invoice;
@@ -128,24 +127,22 @@ function getStripeInvoiceInfoById( $invoice_id )
 
     return $stripe_client['payment_error'];
 }
-function getStripeSubscriptionById( $subscription_id )
+function getStripeSubscriptionById($subscription_id)
 {
     $stripe_client = getStripeClient();
 
-    if( $stripe_client instanceof Stripe\StripeClient )
-    {
+    if ($stripe_client instanceof Stripe\StripeClient) {
         return $stripe_client->subscriptions->retrieve($subscription_id);
     }
 
     return $stripe_client['payment_error'];
 }
 
-function getStripeCancelSubscriptionById( $subscription_id )
+function getStripeCancelSubscriptionById($subscription_id)
 {
     $stripe_client = getStripeClient();
 
-    if( $stripe_client instanceof Stripe\StripeClient )
-    {
+    if ($stripe_client instanceof Stripe\StripeClient) {
         return $stripe_client->subscriptions->cancel($subscription_id);
     }
 

@@ -1,4 +1,5 @@
 <?php
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -10,8 +11,8 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-    'defaults'         => [
-        'guard'     => 'web',
+    'defaults' => [
+        'guard' => 'web',
         'passwords' => 'users',
     ],
     /*
@@ -30,23 +31,23 @@ return [
     | Supported: "session", "token"
     |
     */
-    'guards'           => [
-        'web'   => [
-            'driver'   => 'session',
+    'guards' => [
+        'web' => [
+            'driver' => 'session',
             'provider' => 'users',
         ],
         'admin' => [
-            'driver'   => 'session',
+            'driver' => 'session',
             'provider' => 'users',
         ],
-        'user'  => [
-            'driver'   => 'session',
+        'user' => [
+            'driver' => 'session',
             'provider' => 'users',
         ],
-        'api'   => [
-            'driver'   => 'passport',
+        'api' => [
+            'driver' => 'passport',
             'provider' => 'users',
-            //'hash' => false,
+            // 'hash' => false,
         ],
     ],
     /*
@@ -65,19 +66,19 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-    'providers'        => [
+    'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model'  => App\Models\User::class,
+            'model' => App\Models\User::class,
         ],
         'admin' => [
             'driver' => 'eloquent',
-            'model'  => App\Models\User::class,
+            'model' => App\Models\User::class,
         ],
-        'user'  => [
+        'user' => [
             'driver' => 'eloquent',
-            'model'  => App\Models\User::class,
-        ]
+            'model' => App\Models\User::class,
+        ],
     ],
     /*
     |--------------------------------------------------------------------------
@@ -93,23 +94,23 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
-    'passwords'        => [
+    'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table'    => 'password_resets',
-            'expire'   => 60,
+            'table' => 'password_resets',
+            'expire' => 60,
             'throttle' => 60,
         ],
         'admin' => [
             'provider' => 'admin',
-            'table'    => 'password_resets',
-            'expire'   => 60,
+            'table' => 'password_resets',
+            'expire' => 60,
             'throttle' => 60,
         ],
-        'user'  => [
+        'user' => [
             'provider' => 'user',
-            'table'    => 'password_resets',
-            'expire'   => 60,
+            'table' => 'password_resets',
+            'expire' => 60,
             'throttle' => 60,
         ],
     ],

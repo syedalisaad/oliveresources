@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 /*
  * Swagger
@@ -31,40 +33,38 @@
 class ApiController extends \App\Http\Controllers\Controller
 {
     protected $handleCodes = [
-        'NOT_VERIFIED' => 400
+        'NOT_VERIFIED' => 400,
     ];
 
     protected $ACCESS_TOKEN_SECRET = 'ooOyvEcuRO6jaX64JrXpmDJhoZb9IpN3qwDybvcW';
 
-    public function __construct() {
+    public function __construct() {}
 
-    }
-
-    public function sendResponse( $message, $data = null, $status = 200, $collection = 'data' )
+    public function sendResponse($message, $data = null, $status = 200, $collection = 'data')
     {
         $response = [
-            'status'    => $status,
-            'message'   => $message
+            'status' => $status,
+            'message' => $message,
         ];
 
-        if ( !is_null($data) ) {
+        if (! is_null($data)) {
             $response[$collection] = $data;
         }
 
-        return response()->json( $response );
+        return response()->json($response);
     }
 
-    public function sendError( $message, $data = null, $status = 400, $collection = 'error' )
+    public function sendError($message, $data = null, $status = 400, $collection = 'error')
     {
         $response = [
-            'status'    => $status,
-            'message'   => $message
+            'status' => $status,
+            'message' => $message,
         ];
 
-        if ( !is_null($data) ) {
+        if (! is_null($data)) {
             $response[$collection] = $data;
         }
 
-        return response()->json( $response );
+        return response()->json($response);
     }
 }

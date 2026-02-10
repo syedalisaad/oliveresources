@@ -6,10 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class EmailTemplateRequest extends FormRequest
 {
-
-
-
-
     public function rules()
     {
 

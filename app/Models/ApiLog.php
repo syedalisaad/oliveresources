@@ -8,10 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ApiLog extends Model
 {
     use HasFactory;
-    protected  $table ='api_logs';
-    protected $guarded =[];
 
+    protected $table = 'api_logs';
 
-
-
+    protected $guarded = [];
 }

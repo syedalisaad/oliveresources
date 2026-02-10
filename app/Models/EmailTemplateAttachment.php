@@ -20,6 +20,4 @@ class EmailTemplateAttachment extends Model
     {
         return $this->belongsTo(EmailTemplate::class);
     }
-
-    
 }

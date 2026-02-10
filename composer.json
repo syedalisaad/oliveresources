@@ -44,6 +44,7 @@
         }
     },
     "scripts": {
+        "format": "vendor\\bin\\pint.bat",
         "setup": [
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
