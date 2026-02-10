@@ -283,7 +283,7 @@ class SettingController extends \App\Http\Controllers\AdminController {
         }
         // Social Links URL
         if ( $request->social_links ) {
-            $request->session()->flash( 'account-tab', 'social-network' );
+                 session()->flash( 'account-tab', 'social-network' );
             Setting::where( 'key', 'social_links' )->update( array( 'value' => json_encode( $request->social_links ) ) );
         }
         if ( $request->announcements ) {

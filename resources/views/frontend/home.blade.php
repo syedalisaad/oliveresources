@@ -48,23 +48,37 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="banner-imgs">
                                     <img alt="Olive Resources" src="{{ asset(front_asset('imgs/banner/banner.png')) }}"
-                                        class="img-responsive img-banner shape-1" />
-                                    <span class="union-icon"><img alt="Olive Resources"
-                                            src="{{ asset(front_asset('imgs/banner/union.svg')) }}"
+                                        class="img-responsive img-banner shape-1"    alt="Olive Resources Banner" 
+     width="153" height="400" 
+     loading="lazy"/>
+                                    <span class="union-icon"><img 
+                                            src="{{ asset(front_asset('imgs/banner/union.svg')) }}"  alt="Union Illustration - Olive Resources" 
+     width="94" height="97" 
+     loading="lazy"
                                             class="img-responsive shape-3" /></span>
-                                    <span class="congratulation-icon"><img alt="Olive Resources"
-                                            src="{{ asset(front_asset('imgs/banner/congratulation.svg')) }}"
+                                    <span class="congratulation-icon"><img 
+                                            src="{{ asset(front_asset('imgs/banner/congratulation.svg')) }}"  alt="Congratulations Illustration - Olive Resources" 
+     width="200" height="127" 
+     loading="lazy"
                                             class="img-responsive shape-2" width="200" /></span>
-                                    <span class="docs-icon"><img alt="Olive Resources"
+                                    <span class="docs-icon"><img alt="Documents Illustration - Olive Resources" 
+     width="84" height="79" 
+     loading="lazy"
                                             src="{{ asset(front_asset('imgs/banner/docs.svg')) }}"
                                             class="img-responsive shape-2" /></span>
-                                    <span class="course-icon"><img alt="Olive Resources"
+                                    <span class="course-icon"><img  alt="Course Banner - Olive Resources" 
+     width="100" height="100" 
+     loading="lazy"
                                             src="{{ asset(front_asset('imgs/banner/course.png')) }}"
                                             class="img-responsive shape-3" width="100" /></span>
-                                    <span class="web-dev-icon"><img alt="Olive Resources"
+                                    <span class="web-dev-icon"><img alt="Web Development Illustration - Olive Resources" 
+     width="243" height="132" 
+     loading="lazy"
                                             src="{{ asset(front_asset('imgs/banner/web-dev.svg')) }}"
                                             class="img-responsive shape-3" /></span>
-                                    <span class="tick-icon"><img alt="Olive Resources"
+                                    <span class="tick-icon"><img  alt="Tick Illustration - Olive Resources" 
+     width="73" height="84" 
+     loading="lazy"
                                             src="{{ asset(front_asset('imgs/banner/tick.svg')) }}"
                                             class="img-responsive shape-3" /></span>
                                 </div>
@@ -158,7 +172,9 @@
                 <div class="col-lg-6 col-sm-12">
                     <div class="box-image-job">
                         <figure class=" wow animate__animated animate__fadeIn"><img alt="Olive Resources"
-                                src="{{ asset(front_asset('imgs/blog/img-job.png')) }}" /></figure>
+                                src="{{ asset(front_asset('imgs/blog/img-job.png')) }}"  alt="Job Image - Olive Resources" 
+     width="485" height="403" 
+     loading="lazy"/></figure>
                     </div>
                 </div>
             </div>

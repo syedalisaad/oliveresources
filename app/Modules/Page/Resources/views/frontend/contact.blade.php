@@ -47,7 +47,8 @@
                 <div class="row ">
                     <div class="col-4 contact-us-image">
                         <div class="banner-imgs">
-                            <img alt="Olive Resources" src="{{ asset( front_asset('imgs/banner/banner.png'))}}"
+                            <img alt="Olive Resources" src="{{ asset( front_asset('imgs/banner/banner.png'))}}" width="153" height="400" 
+     loading="lazy"
                                 class="img-responsive img-banner shape-1" />
                         </div>
                     </div>
