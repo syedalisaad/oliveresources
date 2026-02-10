@@ -10,20 +10,12 @@
     <meta name="theme-color" content="#7e9527" />
     <meta name="base-url" content="{{ url('/') }}" />
     <link rel="shortcut icon" type="ico" href="{{ asset( front_asset('imgs/theme/logo.ico'))}}" />
-    <link rel="preload" href="{{ asset(front_asset('css/plugins/animate.min.css')) }}" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ asset(front_asset('css/plugins/animate.min.css')) }}"></noscript>
-
-<link rel="preload" href="{{ asset(front_asset('css/main.css?v=1.0')) }}" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ asset(front_asset('css/main.css?v=1.0')) }}"></noscript>
-
-<link rel="preload" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css"></noscript>
-
-<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
+    <link rel="stylesheet" href="{{ asset( front_asset('css/plugins/animate.min.css'))}}" />
+    <link rel="stylesheet" rel="preload"  rel="preload"  href="{{ asset( front_asset('css/main.css?v=1.0'))}}" onload="this.rel='stylesheet'" />
+    <link rel="stylesheet" rel="preload" href="{{ asset( front_asset('css/preloader.css?v=1.0'))}}" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="google-api-key" content="{{ env('GOOGLE_API_KEY')}}" />
-        <link rel="stylesheet" href="{{ asset( front_asset('css/preloader.css?v=1.0'))}}" />
-
 
     <link rel="apple-touch-icon" href="{{ asset( front_asset('imgs/theme/logo.ico'))}}" />
 
