@@ -1,121 +1,121 @@
 .preloader {
-            background-color: #f7f7f7;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 999999;
-            transition: 0.6s;
-            margin: 0 auto;
-        }
+    background-color: #f7f7f7;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    transition: 0.6s;
+    margin: 0 auto;
+}
 
-        .preloader-container {
-            --uib-size: 100px;
-            --uib-color: #7e9527;
-            --uib-speed: 2.5s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: var(--uib-size);
-            width: var(--uib-size);
-        }
+.preloader-container {
+    --uib-size: 100px;
+    --uib-color: #7e9527;
+    --uib-speed: 2.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: var(--uib-size);
+    width: var(--uib-size);
+}
 
-        .slice {
-            position: relative;
-            height: calc(var(--uib-size) / 6);
-            width: 100%;
-        }
+.slice {
+    position: relative;
+    height: calc(var(--uib-size) / 6);
+    width: 100%;
+}
 
-        .slice::before,
-        .slice::after {
-            --uib-a: calc(var(--uib-speed) / -2);
-            --uib-b: calc(var(--uib-speed) / -6);
-            content: '';
-            position: absolute;
-            top: 0;
-            left: calc(50% - var(--uib-size) / 12);
-            height: 100%;
-            width: calc(100% / 6);
-            border-radius: 50%;
-            flex-shrink: 0;
-            animation: orbit var(--uib-speed) linear infinite;
-            transition: background-color 0.3s ease;
-        }
+.slice::before,
+.slice::after {
+    --uib-a: calc(var(--uib-speed) / -2);
+    --uib-b: calc(var(--uib-speed) / -6);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(50% - var(--uib-size) / 12);
+    height: 100%;
+    width: calc(100% / 6);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: orbit var(--uib-speed) linear infinite;
+    transition: background-color 0.3s ease;
+}
 
 
-        .slice:nth-child(1)::after,
-        .slice:nth-child(1)::before,
-        .slice:nth-child(3)::after,
-        .slice:nth-child(3)::before {
-            background-color: #7e9527;
+.slice:nth-child(1)::after,
+.slice:nth-child(1)::before,
+.slice:nth-child(3)::after,
+.slice:nth-child(3)::before {
+    background-color: #7e9527;
 
-        }
+}
 
-        .slice:nth-child(2)::after,
-        .slice:nth-child(2)::before,
-        .slice:nth-child(5)::after,
-        .slice:nth-child(5)::before {
+.slice:nth-child(2)::after,
+.slice:nth-child(2)::before,
+.slice:nth-child(5)::after,
+.slice:nth-child(5)::before {
 
-            background-color: black;
-        }
+    background-color: black;
+}
 
-        .slice:nth-child(4)::after,
-        .slice:nth-child(4)::before,
-        .slice:nth-child(6)::after,
-        .slice:nth-child(6)::before {
-            background-color: #7e9527;
+.slice:nth-child(4)::after,
+.slice:nth-child(4)::before,
+.slice:nth-child(6)::after,
+.slice:nth-child(6)::before {
+    background-color: #7e9527;
 
-        }
+}
 
-        .slice:nth-child(1)::after {
-            animation-delay: var(--uib-a);
+.slice:nth-child(1)::after {
+    animation-delay: var(--uib-a);
 
-        }
+}
 
-        .slice:nth-child(2)::before {
-            animation-delay: var(--uib-b);
+.slice:nth-child(2)::before {
+    animation-delay: var(--uib-b);
 
-        }
+}
 
-        .slice:nth-child(2)::after {
-            animation-delay: calc(var(--uib-a) + var(--uib-b));
-        }
+.slice:nth-child(2)::after {
+    animation-delay: calc(var(--uib-a) + var(--uib-b));
+}
 
-        .slice:nth-child(3)::before {
-            animation-delay: calc(var(--uib-b) * 2);
-        }
+.slice:nth-child(3)::before {
+    animation-delay: calc(var(--uib-b) * 2);
+}
 
-        .slice:nth-child(3)::after {
-            animation-delay: calc(var(--uib-a) + var(--uib-b) * 2);
-        }
+.slice:nth-child(3)::after {
+    animation-delay: calc(var(--uib-a) + var(--uib-b) * 2);
+}
 
-        .slice:nth-child(4)::before {
-            animation-delay: calc(var(--uib-b) * 3);
-        }
+.slice:nth-child(4)::before {
+    animation-delay: calc(var(--uib-b) * 3);
+}
 
-        .slice:nth-child(4)::after {
-            animation-delay: calc(var(--uib-a) + var(--uib-b) * 3);
-        }
+.slice:nth-child(4)::after {
+    animation-delay: calc(var(--uib-a) + var(--uib-b) * 3);
+}
 
-        .slice:nth-child(5)::before {
-            animation-delay: calc(var(--uib-b) * 4);
-        }
+.slice:nth-child(5)::before {
+    animation-delay: calc(var(--uib-b) * 4);
+}
 
-        .slice:nth-child(5)::after {
-            animation-delay: calc(var(--uib-a) + var(--uib-b) * 4);
-        }
+.slice:nth-child(5)::after {
+    animation-delay: calc(var(--uib-a) + var(--uib-b) * 4);
+}
 
-        .slice:nth-child(6)::before {
-            animation-delay: calc(var(--uib-b) * 5);
-        }
+.slice:nth-child(6)::before {
+    animation-delay: calc(var(--uib-b) * 5);
+}
 
-        .slice:nth-child(6)::after {
-            animation-delay: calc(var(--uib-a) + var(--uib-b) * 5);
-        }
+.slice:nth-child(6)::after {
+    animation-delay: calc(var(--uib-a) + var(--uib-b) * 5);
+}

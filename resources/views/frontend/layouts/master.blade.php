@@ -346,22 +346,53 @@
 
 
     @stack('modals')
+<link rel="preload" as="script" href="{{ asset(front_asset('js/vendor/modernizr-3.6.0.min.js')) }}">
+<link rel="preload" as="script" href="{{ asset(front_asset('js/vendor/jquery-3.6.0.min.js')) }}">
+<link rel="preload" as="script" href="{{ asset(front_asset('js/vendor/bootstrap.bundle.min.js')) }}">
+<link rel="preload" as="script" href="{{ asset(front_asset('js/main.js?v=1.0')) }}">
 
-    <script src="{{ asset( front_asset('js/vendor/modernizr-3.6.0.min.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/vendor/jquery-3.6.0.min.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/vendor/jquery-migrate-3.3.0.min.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/vendor/bootstrap.bundle.min.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/plugins/waypoints.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/plugins/wow.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/plugins/magnific-popup.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/plugins/perfect-scrollbar.min.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/plugins/select2.min.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/plugins/isotope.js'))}}" defer></script>
-    <script src="{{ asset( front_asset('js/plugins/swiper-bundle.min.js'))}}" defer></script>
-    <!-- Template  JS -->
-    <script src="{{ asset( front_asset('js/main.js?v=1.0'))}}" defer></script>
-    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js" defer></script>
-    <script src="{{ asset( front_asset('js/slider.js'))}}" defer></script>
+<!-- Critical scripts -->
+<script src="{{ asset(front_asset('js/vendor/modernizr-3.6.0.min.js')) }}" defer></script>
+<script src="{{ asset(front_asset('js/vendor/jquery-3.6.0.min.js')) }}" defer></script>
+<script src="{{ asset(front_asset('js/vendor/bootstrap.bundle.min.js')) }}" defer></script>
+<script src="{{ asset(front_asset('js/main.js?v=1.0')) }}" defer></script>
+
+<!-- Inline preloader removal (runs immediately after DOM ready) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.style.transition = 'opacity 0.5s';
+        preloader.style.opacity = '0';
+        setTimeout(() => { preloader.style.display = 'none'; }, 500);
+    }
+});
+</script>
+
+<!-- Lazy load non-critical plugins after full page load -->
+<script>
+window.addEventListener('load', function() {
+    const plugins = [
+        '{{ asset(front_asset("js/plugins/waypoints.js")) }}',
+        '{{ asset(front_asset("js/plugins/wow.js")) }}',
+        '{{ asset(front_asset("js/plugins/magnific-popup.js")) }}',
+        '{{ asset(front_asset("js/plugins/perfect-scrollbar.min.js")) }}',
+        '{{ asset(front_asset("js/plugins/select2.min.js")) }}',
+        '{{ asset(front_asset("js/plugins/isotope.js")) }}',
+        '{{ asset(front_asset("js/plugins/swiper-bundle.min.js")) }}',
+        '{{ asset(front_asset("js/slider.js")) }}',
+        'https://unpkg.com/swiper@9/swiper-bundle.min.js'
+    ];
+
+    plugins.forEach(src => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.defer = true;
+        document.body.appendChild(s);
+    });
+});
+</script>
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {},
@@ -375,25 +406,6 @@
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);
         })();
-    </script>
-    <!--End of Tawk.to Script-->
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const preloader = document.querySelector('.preloader');
-    const main = document.querySelector('.main');
-
-    if (preloader && main) {
-        main.style.visibility = 'visible'; // show content immediately
-
-        // fade out preloader
-        preloader.style.transition = 'opacity 0.3s';
-        preloader.style.opacity = '0';
-
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 300); // match CSS transition
-    }
-});
     </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-85VFT91NHZ"></script>
