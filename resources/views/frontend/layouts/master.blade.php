@@ -22,6 +22,8 @@
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></noscript>
     <meta name="google-api-key" content="{{ env('GOOGLE_API_KEY')}}" />
+        <link rel="stylesheet" href="{{ asset( front_asset('css/preloader.css?v=1.0'))}}" />
+
 
     <link rel="apple-touch-icon" href="{{ asset( front_asset('imgs/theme/logo.ico'))}}" />
 
