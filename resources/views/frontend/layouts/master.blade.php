@@ -12,19 +12,32 @@
     <link rel="shortcut icon" type="ico" href="{{ asset( front_asset('imgs/theme/logo.ico'))}}" />
     <link rel="stylesheet" href="{{ asset( front_asset('css/plugins/animate.min.css'))}}" />
     <link rel="stylesheet" href="{{ asset(front_asset('css/vendors/normalize.css')) }}">
-<link rel="stylesheet" href="{{ asset(front_asset('css/vendors/bootstrap.min.css')) }}">
-<link rel="stylesheet" href="{{ asset(front_asset('css/vendors/uicons-regular-rounded.css')) }}">
-<link rel="stylesheet" href="{{ asset(front_asset('css/plugins/swiper-bundle.min.css')) }}">
-<link rel="stylesheet" href="{{ asset(front_asset('css/plugins/magnific-popup.css')) }}">
-<link rel="stylesheet" href="{{ asset(front_asset('css/plugins/select2.min.css')) }}">
-<link rel="stylesheet" href="{{ asset(front_asset('css/plugins/perfect-scrollbar.css')) }}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{ asset(front_asset('css/vendors/uicons-regular-rounded.css')) }}">
+    <link rel="stylesheet" href="{{ asset(front_asset('css/plugins/swiper-bundle.min.css')) }}">
+    <link rel="stylesheet" href="{{ asset(front_asset('css/plugins/magnific-popup.css')) }}">
+    <link rel="stylesheet" href="{{ asset(front_asset('css/plugins/select2.min.css')) }}">
+    <link rel="stylesheet" href="{{ asset(front_asset('css/plugins/perfect-scrollbar.css')) }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+    
+    <link rel="preload"
+      href="{{ asset(front_asset('css/vendors/bootstrap.min.css')) }}"
+      as="style"
+      onload="this.rel='stylesheet'">
 
-<link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
-      rel="stylesheet">
+<link rel="preload"
+      href="{{ asset(front_asset('css/main.css?v=1.0')) }}"
+      as="style"
+      onload="this.rel='stylesheet'">
 
-    <link rel="stylesheet" rel="preload"  rel="preload"  href="{{ asset( front_asset('css/main.css?v=1.0'))}}" onload="this.rel='stylesheet'" />
+<noscript>
+    <link rel="stylesheet" href="{{ asset(front_asset('css/vendors/bootstrap.min.css')) }}">
+    <link rel="stylesheet" href="{{ asset(front_asset('css/main.css?v=1.0')) }}">
+</noscript>
+
     <link rel="stylesheet" rel="preload" href="{{ asset( front_asset('css/preloader.css?v=1.0'))}}" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
     <link rel="preload"
