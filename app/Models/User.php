@@ -3,7 +3,7 @@
 use App\Modules\Order\Respository\OrderRespository;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-//use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -11,14 +11,13 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-//    use SoftDeletes, HasRoles, HasFactory;
-    use HasRoles, HasFactory;
+   use SoftDeletes, HasRoles, HasFactory;
 
     static public $USER_ADMIN   = 0;
     static public $USER_TEAM    = 1;
     static public $USER_USER    = 2;
 
-    static public $VERIFY_TOKEN_LENGTH  = 6; //change 6 to any length you want
+    static public $VERIFY_TOKEN_LENGTH  = 6;
 
     static public $storage_disk = 'users';
 

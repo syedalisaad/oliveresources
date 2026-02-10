@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
 {
@@ -25,13 +25,15 @@ class AdminMiddleware
      *
      * @return mixed
      */
-     public function handle(Request $request, Closure $next)
+    public function handle( Request $request, Closure $next, $guard = 'admin' )
     {
-        if (!\Auth::guard('admin')->check()) {
-            return redirect()->route('admin.login'); 
+        
+        if ( ! auth()->guard( $guard )->check() )
+        {
+            $request->session()->flash( 'error', 'You must be an employee to see this page' );
+            return redirect()->route(admin_route('login'));
         }
 
-        return $next($request);
+        return $next( $request );
     }
 }
-

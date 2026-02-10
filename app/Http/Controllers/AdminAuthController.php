@@ -10,6 +10,7 @@ use \App\Models\User;
 use \App\Models\UserDetail;
 
 use App\Support\Repository\UserRepository;
+use Illuminate\Support\Facades\Log; 
 
 class AdminAuthController extends \App\Http\Controllers\AdminController
 {
@@ -84,7 +85,7 @@ class AdminAuthController extends \App\Http\Controllers\AdminController
 
         $details['is_active'] = 1;
         $details['user_type'] = UserRepository::$USER_ADMIN;
-
+        Log::info($this->mguards);
         if (auth()->guard($this->mguards)->attempt($details, $is_remember)) {
             return $this->sendLoginResponse($request);
         }
