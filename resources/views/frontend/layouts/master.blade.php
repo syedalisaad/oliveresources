@@ -23,21 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
     rel="stylesheet">
     
-    <link rel="preload"
-      href="{{ asset(front_asset('css/vendors/bootstrap.min.css')) }}"
-      as="style"
-      onload="this.rel='stylesheet'">
-
-<link rel="preload"
-      href="{{ asset(front_asset('css/main.css?v=1.0')) }}"
-      as="style"
-      onload="this.rel='stylesheet'">
-
-<noscript>
+    <link rel="stylesheet" rel="preload"  rel="preload"  href="{{ asset( front_asset('css/main.css?v=1.0'))}}" onload="this.rel='stylesheet'" />
     <link rel="stylesheet" href="{{ asset(front_asset('css/vendors/bootstrap.min.css')) }}">
-    <link rel="stylesheet" href="{{ asset(front_asset('css/main.css?v=1.0')) }}">
-</noscript>
-
     <link rel="stylesheet" rel="preload" href="{{ asset( front_asset('css/preloader.css?v=1.0'))}}" />
     <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css" />
     <link rel="preload"
