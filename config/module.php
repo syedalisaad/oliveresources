@@ -2,7 +2,7 @@
 # config/module.php
 return [
     'modules' => [
-        'General', //Default
+        'General',
         'Dashboard',
         'User',
         'HospitalSurvey',

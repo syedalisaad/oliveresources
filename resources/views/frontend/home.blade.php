@@ -1,5 +1,5 @@
 @extends(front_layout('master'))
-@section('title', 'Talentbees | Top Recruitment Agency | Job Placement in Pakistan, USA, Dubai, UK, Saudi Arabia, KSA & Malaysia')
+@section('title', 'oliveresources | Top Recruitment Agency | Job Placement in Pakistan, USA, Dubai, UK, Saudi Arabia, KSA & Malaysia')
 @section('meta_tags')
 <meta name="keywords"
     content="recruitment agency, job placement, HR solutions, staffing, recruitment Pakistan, recruitment USA, job agency Dubai, job placement UK, recruitment Saudi Arabia,recruitment KSA, HR services Malaysia" />
@@ -34,7 +34,7 @@
                                     <h1 class="heading-banner wow animate__animated animate__fadeInUp">Top Recruitment Agency for Pakistan, USA, Dubai, UK, KSA & Malaysia
                                     </h1>
                                     <div class="banner-description mt-30 wow animate__animated animate__fadeInUp"
-                                        data-wow-delay=".1s">At Talent bees, we’re focused on working closely with
+                                        data-wow-delay=".1s">At Olive Resources, we’re focused on working closely with
                                         world’s &
                                         local top Startups and Giants acquire Talent in Real time. We’re also good with
                                         products and services that streamline daily operations, boost productivity and
@@ -47,24 +47,24 @@
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <div class="banner-imgs">
-                                    <img alt="Talent bees" src="{{ asset(front_asset('imgs/banner/banner.png')) }}"
+                                    <img alt="Olive Resources" src="{{ asset(front_asset('imgs/banner/banner.png')) }}"
                                         class="img-responsive img-banner shape-1" />
-                                    <span class="union-icon"><img alt="Talent bees"
+                                    <span class="union-icon"><img alt="Olive Resources"
                                             src="{{ asset(front_asset('imgs/banner/union.svg')) }}"
                                             class="img-responsive shape-3" /></span>
-                                    <span class="congratulation-icon"><img alt="Talent bees"
+                                    <span class="congratulation-icon"><img alt="Olive Resources"
                                             src="{{ asset(front_asset('imgs/banner/congratulation.svg')) }}"
                                             class="img-responsive shape-2" width="200" /></span>
-                                    <span class="docs-icon"><img alt="Talent bees"
+                                    <span class="docs-icon"><img alt="Olive Resources"
                                             src="{{ asset(front_asset('imgs/banner/docs.svg')) }}"
                                             class="img-responsive shape-2" /></span>
-                                    <span class="course-icon"><img alt="Talent bees"
+                                    <span class="course-icon"><img alt="Olive Resources"
                                             src="{{ asset(front_asset('imgs/banner/course.png')) }}"
                                             class="img-responsive shape-3" width="100" /></span>
-                                    <span class="web-dev-icon"><img alt="Talent bees"
+                                    <span class="web-dev-icon"><img alt="Olive Resources"
                                             src="{{ asset(front_asset('imgs/banner/web-dev.svg')) }}"
                                             class="img-responsive shape-3" /></span>
-                                    <span class="tick-icon"><img alt="Talent bees"
+                                    <span class="tick-icon"><img alt="Olive Resources"
                                             src="{{ asset(front_asset('imgs/banner/tick.svg')) }}"
                                             class="img-responsive shape-3" /></span>
                                 </div>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="box-image-job">
-                        <figure class=" wow animate__animated animate__fadeIn"><img alt="Talent bees"
+                        <figure class=" wow animate__animated animate__fadeIn"><img alt="Olive Resources"
                                 src="{{ asset(front_asset('imgs/blog/img-job.png')) }}" /></figure>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Privacy Policy</h1>
         <h2>1. Introduction</h2>
-        <p>Welcome to <a href="https://oliveresources.com">TalentBees.co</a> (“Company,” “we,” “our,” “us”). Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in any way.</p>
+        <p>Welcome to <a href="https://oliveresources.com">oliveresources.com</a> (“Company,” “we,” “our,” “us”). Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us in any way.</p>
 
         <h2>2. Information We Collect</h2>
         <ul>

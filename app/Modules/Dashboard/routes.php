@@ -11,8 +11,7 @@ use App\Modules\Dashboard\Controllers\Frontend\DashboardController as FrontDashb
 */
 Route::prefix('admin')->name('admin.')->group(function () {
 
-    // ✅ Protected Admin Routes
-    Route::middleware('admin')->group(function () {
+    Route::middleware(['web','admin'])->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])
             ->name('dashboard');
 

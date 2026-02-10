@@ -1,19 +1,15 @@
 <?php namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable
 {
-    use HasRoles, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
     protected $table = 'users';
 
-    protected $guarded = [];
-    protected $hidden = ['password', 'remember_token'];
     protected $guard = 'admin';
 
 
@@ -33,9 +29,7 @@ class Admin extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token', 'verifytoken', 'ip_address'
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
     /**
      * The attributes that should be cast to native types.

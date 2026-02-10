@@ -1,4 +1,6 @@
 <?php
+
+
 Route::prefix( 'admin' )->name( 'admin.' )->middleware( 'admin' )->namespace( 'App\Modules\Page\Controllers\Backend' )->group( function() {
     Route::get( 'page/list', 'PageController@ajaxManageable' )->name( 'page.ajax.manageable' );
     Route::get( 'page/delete/{id}', 'PageController@destroy' )->name( 'page.delete' );

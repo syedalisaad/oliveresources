@@ -293,7 +293,7 @@
             <div class="main-header">
                 <div class="header-left">
                     <div class="header-logo">
-                        <a href="{{url('/')}}" class="d-flex"><img loading="lazy" title="Website Logo" alt="Talent bees"
+                        <a href="{{url('/')}}" class="d-flex"><img loading="lazy" title="Website Logo" alt="Olive Resources"
                                 src="{{ asset( front_asset('imgs/theme/logo.png'))}}" width="206" height="46" /></a>
                     </div>
                     <div class="header-nav">
@@ -375,7 +375,7 @@
                         <a href="{{$site_settings['social_links']['linkedin']}}" target="_blank" class="icon-socials icon-linkedin"><i class="fa fa-linkedin" style="font-size:24px"></i></a>
                         @endif
                     </div>
-                    <div class="site-copyright">Copyright 2025 © Talent bees.</div>
+                    <div class="site-copyright">Copyright 2025 © Olive Resources.</div>
                 </div>
             </div>
         </div>

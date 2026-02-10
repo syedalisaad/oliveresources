@@ -13,18 +13,14 @@ use Illuminate\Support\Facades\Auth;
 /*
  * Admin Section
  */
-function getAuth() {
-
-    $user = \Auth::guard( 'admin' )->user();
-
-    //TODO :: Redirection to login
-    if( !$user ){
-        return redirect('/');
-    }
-
-    return \App\Models\User::find( $user->id );
-
-    return \Auth::guard( 'admin' )->user();
+/**
+ * Get the currently authenticated user/admin.
+ *
+ * @param string $guard The auth guard to use ('admin' or 'web')
+ * @return \Illuminate\Foundation\Auth\User|null
+ */
+function getAuth($guard = 'web') {
+    return \Auth::guard($guard)->user();
 }
 
 function isAdmin()

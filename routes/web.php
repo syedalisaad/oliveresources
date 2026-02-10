@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminAuthController;
 
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/test-admin-middleware', function () {
+    return 'Middleware resolved successfully';
+})->middleware(['web', 'admin']);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,3 +52,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::prefix('dev')->group(function () {
     require __DIR__ . '/dev-commands.php';
 });
+
