@@ -352,7 +352,7 @@
     @endif
 
     @if(isset($site_settings['social_links']['linkedin']) && $site_settings['social_links']['linkedin'])
-        <a href="{{ $site_settings['social_links']['linkedin'] }}" target="_blank"  rel="noopener noreferrer" class="icon-socials icon-linkedin" alt="LinkedIn">
+        <a href="{{ $site_settings['social_links']['linkedin'] }}" target="_blank" class="icon-socials icon-linkedin" alt="LinkedIn">
             <i class="fa fa-linkedin" style="font-size:24px"></i> <span style="display:none">LinkedIn</span>
         </a>
     @endif
