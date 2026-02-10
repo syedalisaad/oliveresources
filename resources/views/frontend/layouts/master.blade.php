@@ -378,17 +378,17 @@
     </script>
     <!--End of Tawk.to Script-->
     <script>
-        window.addEventListener('load', function() {
-            const preloader = document.querySelector('.preloader');
-            preloader.style.opacity = '0'; // Add fade-out effect
-            preloader.style.transition = 'opacity 0.5s'; // Smooth transition
+     document.addEventListener('DOMContentLoaded', function() {
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.style.transition = 'opacity 0.5s';
+        preloader.style.opacity = '0';
 
-            setTimeout(() => {
-                preloader.style.display = 'none'; // Completely remove preloader
-            }, 50); // Matches the duration of the fade-out transition
-
-
-        });
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500); // matches CSS transition
+    }
+});
     </script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-85VFT91NHZ"></script>
