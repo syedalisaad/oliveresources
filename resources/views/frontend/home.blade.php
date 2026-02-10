@@ -7,8 +7,7 @@
 <meta property="url" content="{{ url('/') }}" />
 <meta property="type" content="website" />
 <meta property="title" content="Best Recruitment Agency | Hiring Made Easy" />
-<meta property="description"
-    content="Looking for top recruitment services? We connect talented professionals with leading companies in Pakistan, USA, Dubai, UK, and Malaysia" />
+<meta name="description" content="Olive Resources is your trusted platform for hiring top talent and managing HR efficiently. Find jobs, manage teams, and grow your business with us.">
 
 <meta property="og:url" content="{{ url('/') }}" />
 <meta property="og:type" content="website" />
