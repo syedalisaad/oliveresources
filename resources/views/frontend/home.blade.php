@@ -49,7 +49,7 @@
                                     <img rel="preload" as="image" src="{{ asset(front_asset('imgs/banner/banner.png')) }}"
                                         class="img-responsive img-banner shape-1"    alt="Olive Resources Banner" 
      width="153" height="400" 
-     loading="lazy"/>
+     loading="lazy"  decoding="async"/>
                                     <span class="union-icon"><img 
                                             src="{{ asset(front_asset('imgs/banner/union.svg')) }}"  alt="Union Illustration - Olive Resources" 
      width="94" height="97" 
