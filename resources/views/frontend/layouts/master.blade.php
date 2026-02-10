@@ -378,15 +378,20 @@
     </script>
     <!--End of Tawk.to Script-->
     <script>
-     document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.querySelector('.preloader');
-    if (preloader) {
-        preloader.style.transition = 'opacity 0.5s';
+    const main = document.querySelector('.main');
+
+    if (preloader && main) {
+        main.style.visibility = 'visible'; // show content immediately
+
+        // fade out preloader
+        preloader.style.transition = 'opacity 0.3s';
         preloader.style.opacity = '0';
 
         setTimeout(() => {
             preloader.style.display = 'none';
-        }, 500); // matches CSS transition
+        }, 300); // match CSS transition
     }
 });
     </script>
