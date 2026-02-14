@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.10.1",
         "laravel/ui": "^4.6",
         "spatie/laravel-permission": "^6.24",
+        "spatie/laravel-sitemap": "^7.3",
         "unisharp/laravel-filemanager": "*",
         "yajra/laravel-datatables-oracle": "^12.6"
     },
