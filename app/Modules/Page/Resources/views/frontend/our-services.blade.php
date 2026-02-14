@@ -56,10 +56,10 @@
         <div class="row">
         <div class="col-lg-12 text-center our-services-banner">
             <h1 class="section-title-large wow animate__animated animate__fadeInUp">
-                Recruitment & Staffing Services in Pakistan
+                Recruitment & Staffing Services
             </h1>
             <p class="text-white mt-20 mb-20">
-                Olive Resources is a trusted recruitment and staffing agency in Pakistan, delivering permanent recruitment,
+                Olive Resources is a trusted recruitment and staffing agency, delivering permanent recruitment,
                 contract staffing, executive search, RPO, and tailored hiring solutions. We help businesses attract, hire,
                 and retain top talent while empowering candidates to build successful careers.
             </p>
