@@ -25,6 +25,10 @@
   font-size: medium;
   font-weight: 500;
 }
+.comapny-contact-font a {
+  color: var(--bs-bees-black);
+  text-decoration: none;
+}
 
 .font-address {
   font-weight: 500;
@@ -3722,61 +3726,20 @@ label {
 
 .footer .footer-bottom a {
   text-decoration: none;
-}
+  color: var(--bs-bees-gold) !important;
 
-/* 
-.footer .footer-bottom .icon-socials {
-  display: inline-block;
-  margin-left: 10px;
-  height: 30px;
-  width: 30px;
-  transition-duration: 0.2s;
 }
+.footer-navigation a{
+  color: var(--bs-bees-gold);
+  text-decoration: none;
+  font-weight: 500;
 
-.footer .footer-bottom .icon-socials:hover {
-  transform: translateY(-3px);
-  transition-duration: 0.2s;
 }
+.footer-navigation a:hover{
+  color: var(--bs-bees-black);
 
-.footer .footer-bottom .icon-socials.icon-facebook {
-  background: url(../imgs/theme/icons/facebook.svg) no-repeat 0px 0px;
-  transition-duration: 0.2s;
+
 }
-
-.footer .footer-bottom .icon-socials.icon-facebook:hover {
-  background: url(../imgs/theme/icons/facebook-hover.svg) no-repeat 0px 0px;
-  transition-duration: 0.2s;
-}
-
-.footer .footer-bottom .icon-socials.icon-twitter {
-  background: url(../imgs/theme/icons/twitter.svg) no-repeat 0px 0px;
-  transition-duration: 0.2s;
-}
-
-.footer .footer-bottom .icon-socials.icon-twitter:hover {
-  background: url(../imgs/theme/icons/twitter-hover.svg) no-repeat 0px 0px;
-  transition-duration: 0.2s;
-}
-
-.footer .footer-bottom .icon-socials.icon-instagram {
-  background: url(../imgs/theme/icons/instagram.svg) no-repeat 0px 0px;
-  transition-duration: 0.2s;
-}
-
-.footer .footer-bottom .icon-socials.icon-instagram:hover {
-  background: url(../imgs/theme/icons/instagram-hover.svg) no-repeat 0px 0px;
-  transition-duration: 0.2s;
-}
-
-.footer .footer-bottom .icon-socials.icon-linkedin {
-  background: url(../imgs/theme/icons/linkedin.svg) no-repeat 0px 0px;
-  transition-duration: 0.2s;
-}
-
-.footer .footer-bottom .icon-socials.icon-linkedin:hover {
-  background: url(../imgs/theme/icons/linkedin-hover.svg) no-repeat 0px 0px;
-  transition-duration: 0.2s;
-} */
 
 #scrollUp {
   width: 42px;

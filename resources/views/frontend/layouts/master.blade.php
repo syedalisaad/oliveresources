@@ -286,7 +286,7 @@
         </a>
     @endif
 </div>
-                    <div class="site-copyright">Copyright 2025 © Olive Resources.</div>
+                    <div class="site-copyright">Copyright 2026 © Olive Resources.</div>
                 </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
                         <img rel="preload" as="image" loading="lazy" title="Website Logo" class="img-fluid w-md-50 w-sm-75" alt="Olive Resources"
                             src="{{ asset( front_asset('imgs/theme/logo.png'))}}" width="260" height="42" decoding="async" /></a>
                 </div>
-                <div class="col-md-6 col-sm-12">
+                <div class="col-md-6 col-sm-12 footer-navigation">
                     <div class="row">
                         <div class="col-md-12 col-xs-6">
                             <div class="row">
@@ -308,7 +308,6 @@
                                     <h6>Company</h6>
                                 </div>
                                 <div class="col-md-3 col-xs-12"><a href="{{url('/')}}">Home</a></div>
-                                <!-- <div class="col-md-3 col-xs-12"><a href="{{ route(front_route('page.about')) }}">About Us</a></div> -->
                                 <div class="col-md-3 col-xs-12"><a href="{{ route(front_route('page.contact')) }}">Contact</a></div>
                             </div>
                         </div>
@@ -319,7 +318,6 @@
                                     <h6>Support</h6>
                                 </div>
                                 <div class="col-md-3 col-xs-12"><a href="{{route(front_route('page.privacy_policy'))}}">Privacy Policy</a></div>
-                                <!-- <div class="col-md-3 col-xs-12"><a href="{{route(front_route('page.terms')).'/#dp'}}">Refund Policy</a></div> -->
                                 <div class="col-md-3 col-xs-12"><a href="{{ route(front_route('page.faq')) }}">FAQ</a></div>
                             </div>
                         </div>
