@@ -1,8 +1,7 @@
 @php
-    $meta_title = 'Contact Us | Olive Resources – Recruitment & HR Services';
-    $meta_description = 'Contact Olive Resources for recruitment, staffing, HR outsourcing, and payroll services. Call, email, or send us a message today.';
+    $meta_title = 'Contact Us | Olive Resources – Premium B2B Recruitment & HR Search';
+    $meta_description = 'Connect with Olive Resources for global B2B recruitment, executive search, contract staffing, and technical team extension frameworks.';
     $og_image = asset(front_asset('imgs/banner/banner.png'));
-
 @endphp
 
 @extends(front_layout('master'))
@@ -18,134 +17,180 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ route(front_route('page.contact')) }}">
     <meta property="og:image" content="{{ $og_image }}">
-    <meta property="og:image:alt" content="Contact Olive Resources HR Agency">
+    <meta property="og:image:alt" content="Contact Olive Resources Corporate Recruitment Team">
 
+    <!-- BREADCRUMB & CORPORATE CONTACT DATA SCHEMA -->
+    @php
+        $baseUrl = url('/');
+        $contactUrl = route(front_route('page.contact'));
+
+        $schemaData = [
+            "@context" => "https://schema.org",
+            "@graph" => [
+                [
+                    "@type" => "BreadcrumbList",
+                    "@id" => $contactUrl . "/#breadcrumb",
+                    "itemListElement" => [
+                        [
+                            "@type" => "ListItem",
+                            "position" => 1,
+                            "name" => "Home",
+                            "item" => $baseUrl
+                        ],
+                        [
+                            "@type" => "ListItem",
+                            "position" => 2,
+                            "name" => "Contact Us",
+                            "item" => $contactUrl
+                        ]
+                    ]
+                ],
+                [
+                    "@type" => "ContactPage",
+                    "@id" => $contactUrl . "/#contact",
+                    "url" => $contactUrl,
+                    "name" => "Contact Olive Resources",
+                    "description" => "Corporate partner engagement and talent acquisition consultation portal.",
+                    "mainEntity" => [
+                        "@type" => "Organization",
+                        "name" => "Olive Resources",
+                        "telephone" => ["+923343588890", "+923122912921"],
+                        "email" => ["info@oliveresources.com", "sales@oliveresources.com"],
+                        "address" => [
+                            "@type" => "PostalAddress",
+                            "streetAddress" => "A-156 Gulshan-e-Iqbal, Block 10A",
+                            "addressLocality" => "Karachi",
+                            "addressRegion" => "Sindh",
+                            "addressCountry" => "Pakistan"
+                        ]
+                    ]
+                ]
+            ]
+        ];
+    @endphp
+    <script type="application/ld+json">
+    {!! json_encode($schemaData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+    </script>
 @endsection
 
 @section('content')
-
 <main class="main">
 
-    <!-- Page Heading -->
-    <section class="">
-        <div class="row row-bg-gold mb-50 pb-3 pt-3">
-            <h1 class="text-center wow animate__animated animate__fadeInUp touch-font" data-wow-delay=".1s">
-                Contact Olive Resources
+    <!-- PAGE HERO HEADER -->
+    <section class="section-box text-white py-5 position-relative overflow-hidden" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+        <div class="position-absolute rounded-circle opacity-10" style="top: -10%; right: -5%; width: 400px; height: 400px; background: #8FA43E; filter: blur(120px); pointer-events: none;"></div>
+        <div class="container py-4 position-relative text-center" style="z-index: 2; max-width: 800px;">
+            <span class="badge mb-3 py-2 px-3 text-uppercase font-heading" style="background-color: #8FA43E; color: #fff; letter-spacing: 1.5px; font-size: 0.8rem; font-weight: 600; border-radius: 4px;">Partner Engagement</span>
+            <h1 class="display-4 font-heading text-white fw-bold wow animate__animated animate__fadeInUp" style="letter-spacing: -1px;">
+                Contact Our Global Team
             </h1>
-
-            <div class="col-xl-9 col-md-12 mx-auto">
-                <div class="contact-from-area padding-20-row-col">
-
-                    <!-- Contact Info -->
-                    <div class="row mt-20">
-
-                        <div class="col-md-4 text-center wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
-                            <img src="{{ asset(front_asset('imgs/theme/icons/headset-color.svg'))}}" width="35" height="35" alt="Phone Contact Olive Resources">
-                            <p class="mb-10 font-address">Phone</p>
-                            <p class="mb-0 comapny-contact-font">
-                                <a href="tel:+923343588890">+92 334 3588890</a><br>
-                                <a href="tel:+923122912921">+92 312 2912921</a>
-                            </p>
-                        </div>
-
-                        <div class="col-md-4 mt-sm-30 text-center wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
-                            <img src="{{ asset(front_asset('imgs/theme/icons/marker-color.svg'))}}" width="35" height="35" alt="Email Olive Resources">
-                            <p class="mb-10 font-address">Email</p>
-                            <p class="mb-0 comapny-contact-font">
-                                <a href="mailto:hr@oliveresources.com">hr@oliveresources.com</a><br>
-                                <a href="mailto:info@oliveresources.com">info@oliveresources.com</a><br>
-                                <a href="mailto:contact@oliveresources.com">contact@oliveresources.com</a><br>
-                                <a href="mailto:sales@oliveresources.com">sales@oliveresources.com</a>
-                            </p>
-                        </div>
-
-                        <div class="col-md-4 mt-sm-30 text-center wow animate__animated animate__fadeInUp" data-wow-delay=".5s">
-                            <img src="{{ asset(front_asset('imgs/theme/icons/plane-color.svg'))}}" width="35" height="35" alt="Office Address Olive Resources">
-                            <p class="mb-10 font-address">Address</p>
-                            <p class="mb-0 comapny-contact-font">
-                                A-156 Gulshan-e-Iqbal<br>
-                                Block 10A, Karachi, Pakistan
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <p class="mt-2 text-gray-300 fs-5 wow animate__animated animate__fadeInUp" data-wow-delay=".1s" style="color: #cbd5e1; font-weight: 300;">
+                Connect with our human capital consultants to engineer, scale, and optimize your global developer pipelines.
+            </p>
         </div>
+    </section>
 
-        <!-- Contact Form -->
-        <div class="row mb-50">
-            <div class="col-xl-8 col-md-12 mx-auto">
-                <div class="row">
-
-                    <div class="col-4 contact-us-image">
-                        <img
-                            src="{{ asset(front_asset('imgs/banner/banner.png')) }}"
-                            alt="Contact Olive Resources HR Agency"
-                            width="153"
-                            height="400"
-                            loading="lazy"
-                            class="img-responsive img-banner shape-1"
-                        >
-                    </div>
-
-                    <div class="col-md-8 col-sm-12">
-                        <h2>Have a Question? Let’s Discuss</h2>
-                        <p>
-                            Please let us know how we can assist you with recruitment, HR outsourcing, or payroll services.
+    <!-- STRUCTURED CORPORATE INFRASTRUCTURE INFOCARDS -->
+    <section class="section-box py-5" style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+        <div class="container py-2">
+            <div class="row g-4 justify-content-center">
+                <!-- Phone Card -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center bg-white" style="border-top: 3px solid #8FA43E !important;">
+                        <div class="rounded-circle p-2 mx-auto mb-3 d-flex align-items-center justify-content-center" style="background-color: rgba(143,164,62,0.1); width: 50px; height: 50px;">
+                            <img src="{{ asset(front_asset('imgs/theme/icons/headset-color.svg'))}}" width="26" height="26" alt="Phone Support Lines">
+                        </div>
+                        <h5 class="fw-bold mb-2 font-heading" style="color: #0f172a;">Enterprise Phone Lines</h5>
+                        <p class="small text-secondary mb-0" style="line-height: 1.6;">
+                            <a href="tel:+923343588890" class="text-decoration-none text-secondary hover-olive font-address font-weight-bold">+92 334 3588890</a><br>
+                            <a href="tel:+923122912921" class="text-decoration-none text-secondary hover-olive font-address font-weight-bold">+92 312 2912921</a>
                         </p>
+                    </div>
+                </div>
 
-                        <div id="success-message" class="alert alert-success mt-3 d-none">
-                            Thank you for contacting us, we will reach you shortly.
+                <!-- Email Card -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center bg-white" style="border-top: 3px solid #0f172a !important;">
+                        <div class="rounded-circle p-2 mx-auto mb-3 d-flex align-items-center justify-content-center" style="background-color: rgba(15,23,42,0.05); width: 50px; height: 50px;">
+                            <img src="{{ asset(front_asset('imgs/theme/icons/marker-color.svg'))}}" width="26" height="26" alt="Email Channels">
                         </div>
+                        <h5 class="fw-bold mb-2 font-heading" style="color: #0f172a;">Corporate Email Channels</h5>
+                        <p class="small text-secondary mb-0" style="line-height: 1.5;">
+                            <a href="mailto:hr@oliveresources.com" class="text-decoration-none text-secondary hover-olive font-address font-weight-bold">hr@oliveresources.com</a>
+                        </p>
+                    </div>
+                </div>
 
-                        <form id="contactForm">
-                            @csrf
-
-                            <div class="mb-3">
-                                <input type="text" name="first_name" class="form-control" placeholder="First Name">
-                                <div class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="mb-3">
-                                <input type="text" name="last_name" class="form-control" placeholder="Last Name">
-                                <div class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6 mb-3">
-                                    <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                                <div class="col-lg-6 mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Email Address">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <textarea
-                                    name="message"
-                                    class="form-control"
-                                    rows="4"
-                                    maxlength="250"
-                                    placeholder="Your message (max 250 characters)">
-                                </textarea>
-                                <div class="invalid-feedback"></div>
-                            </div>
-
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-default font-heading">
-                                    Send Message
-                                </button>
-                            </div>
-                        </form>
-
+                <!-- Office Address Card -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center bg-white" style="border-top: 3px solid #8FA43E !important;">
+                        <div class="rounded-circle p-2 mx-auto mb-3 d-flex align-items-center justify-content-center" style="background-color: rgba(143,164,62,0.1); width: 50px; height: 50px;">
+                            <img src="{{ asset(front_asset('imgs/theme/icons/plane-color.svg'))}}" width="26" height="26" alt="Headquarters Location">
+                        </div>
+                        <h5 class="fw-bold mb-2 font-heading" style="color: #0f172a;">Regional HQ</h5>
+                        <p class="small text-secondary mb-0 font-address" style="line-height: 1.6;">
+                            A-156, Block 10A, Gulshan-e-Iqbal,<br>
+                            Karachi, Pakistan
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
+    <!-- PREMIUM CENTRAL ENGAGEMENT FORM -->
+    <section class="section-box py-5 bg-white">
+        <div class="container" style="max-width: 800px;">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold mb-2" style="color: #0f172a;">Initiate a Consultation</h2>
+                <p class="text-muted">Specify your talent constraints or staffing requirements to begin partner onboarding.</p>
+            </div>
+
+            <div id="success-message" class="alert alert-success mt-3 d-none shadow-sm">
+                Thank you for contacting us, our engagement managers will reach you shortly.
+            </div>
+
+            <form id="contactForm" class="p-4 rounded shadow-sm border mt-3 bg-light">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label small fw-bold text-dark text-uppercase tracking-wider">First Name</label>
+                        <input type="text" name="first_name" class="form-control py-2" placeholder="First Name" required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label small fw-bold text-dark text-uppercase tracking-wider">Last Name</label>
+                        <input type="text" name="last_name" class="form-control py-2" placeholder="Last Name" required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label small fw-bold text-dark text-uppercase tracking-wider">Corporate Phone</label>
+                        <input type="tel" name="phone" class="form-control py-2" placeholder="e.g. +92 300 1234567">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label small fw-bold text-dark text-uppercase tracking-wider">Business Email</label>
+                        <input type="email" name="email" class="form-control py-2" placeholder="name@company.com" required>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-dark text-uppercase tracking-wider">Engagement / Brief Details</label>
+                    <textarea name="message" class="form-control" rows="5" maxlength="250" placeholder="Describe your talent pipeline profiles or HR outsourcing dependencies (Max 250 characters)..." style="resize: none;" required></textarea>
+                    <div class="invalid-feedback"></div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn w-100 font-heading text-white py-3 fw-bold btn-submit shadow transition" style="background-color: #8FA43E; border: none; border-radius: 4px; font-size: 1rem; letter-spacing: 0.5px;">
+                        Submit Engagement Brief &rarr;
+                    </button>
+                </div>
+            </form>
+        </div>
     </section>
 
     @include(frontend_module_view('common.newsletter', 'Page'))
@@ -155,10 +200,8 @@
 
 @push('scripts')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
 $(document).ready(function () {
-
     $('#contactForm').on('submit', function (e) {
         e.preventDefault();
 
@@ -169,7 +212,7 @@ $(document).ready(function () {
         form.find('.is-invalid').removeClass('is-invalid');
         form.find('.invalid-feedback').text('');
 
-        submitButton.prop('disabled', true).text('Sending...');
+        submitButton.prop('disabled', true).text('Processing Engagement...');
 
         $.ajax({
             url: "{{ route(front_route('page.contact')) }}",
@@ -179,6 +222,9 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     $('#success-message').removeClass('d-none').text(response.message);
                     form[0].reset();
+                    setTimeout(() => {
+                        $('#success-message').addClass('d-none');
+                    }, 4000);
                 }
             },
             error: function (xhr) {
@@ -187,18 +233,37 @@ $(document).ready(function () {
                     for (let field in errors) {
                         let input = form.find(`[name="${field}"]`);
                         input.addClass('is-invalid');
-                        input.next('.invalid-feedback').text(errors[field][0]);
+                        input.siblings('.invalid-feedback').text(errors[field][0]);
                     }
                 } else {
-                    alert('Something went wrong. Please try again.');
+                    alert('Something went wrong. Please check your data variables and try again.');
                 }
             },
             complete: function () {
-                submitButton.prop('disabled', false).text('Send Message');
+                submitButton.prop('disabled', false).text('Submit Engagement Brief');
             }
         });
     });
-
 });
 </script>
 @endpush
+
+<style>
+    /* Styling Polish Transitions */
+    .hover-olive:hover {
+        color: #8FA43E !important;
+    }
+    .btn-submit:hover {
+        background-color: #7b8e34 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 20px rgba(143,164,62,0.2) !important;
+    }
+    .form-control:focus {
+        background-color: #ffffff !important;
+        border: 1px solid #8FA43E !important;
+        box-shadow: 0 0 0 4px rgba(143,164,62,0.15) !important;
+    }
+    .transition {
+        transition: all 0.3s ease-in-out;
+    }
+</style>
