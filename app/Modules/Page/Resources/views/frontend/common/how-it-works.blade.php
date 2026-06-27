@@ -1,163 +1,69 @@
-<section class="section-box mt-40 mb-60">
+<section class="section-box my-5 py-5" style="background-color: #ffffff;">
     <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-12">
-                <h2 class="section-title howIt mb-20 wow animate__animated animate__fadeInUp text-center">How Its Works</h2>
-                <p class="text-center text-md-lh28 color-black-5 wow animate__animated animate__fadeInUp">A
-                    Olive Resources
-                    operates as a bridge between employers seeking the right talent and candidates looking for
-                    the perfect opportunity. Here’s an overview of how the process works:</p>
+        <!-- Section Header -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <span style="color: #8FA43E; font-weight: 700;" class="text-uppercase font-heading small">Our Methodology</span>
+                <h2 class="section-title fw-bold mt-2 mb-3 wow animate__animated animate__fadeInUp" style="color: #0f172a;">
+                    How It Works
+                </h2>
+                <p class="text-muted fs-5 wow animate__animated animate__fadeInUp" style="line-height: 1.6;">
+                    Olive Resources serves as an elite talent partner, bridging the gap between exceptional global professionals and organizations that demand excellence. Here is our structured engagement workflow.
+                </p>
             </div>
         </div>
-        <div class="row mt-40 gap-y-20 gridRow">
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="card-grid firstCard hover-up wow animate__animated animate__fadeInUp">
-                    <h3 class="card-heading">Understand Client Needs</h3>
-                    <ul class="mt-10">
-                        <li>
-                            We consult with you to learn about your hiring requirements, culture, and goals.
-                        </li>
-                        <li></li>
-                        <li>
-                            We clarify the role’s responsibilities, qualifications, and core competencies.
-                        </li>
-                        <li>
-                            We craft a tailored recruitment plan to find the ideal candidate.
-                        </li>
 
-                    </ul>
+        <!-- Consolidated Strategic Phases Grid -->
+        <div class="row g-4 mt-2">
+            <!-- Phase 1 -->
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="card h-100 border-0 p-4 shadow-sm hover-up bg-white transition position-relative" style="border-top: 3px solid #e2e8f0 !important;">
+                    <div class="position-absolute top-0 end-0 p-3 fw-bold display-6 font-heading opacity-10" style="color: #0f172a; pointer-events: none;">01</div>
+                    <div class="card-body p-0">
+                        <h4 class="fw-bold mb-3" style="color: #0f172a; padding-right: 2rem;">Discovery & Alignment</h4>
+                        <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                            We consult directly with your leadership team to define core competencies, technical benchmarks, and cultural alignment metrics. This forms a hyper-targeted recruitment roadmap unique to your enterprise objectives.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="card-grid hover-up secondCard wow mh340 animate__animated animate__fadeInUp">
-                    <h3 class="card-heading">Talent Sourcing
-                    </h3>
-                    <ul class="mt-10">
-                        <li>We leverage a vast network of pre-screened professionals
-                        </li>
-                        <li></li>
-                        <li>We advertise on job boards, social media, and niche platforms.
-                        </li>
-                        <li>
-                            We proactively search for passive candidates through headhunting and networking.
-                        </li>
 
-
-                    </ul>
+            <!-- Phase 2 -->
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="card h-100 border-0 p-4 shadow-sm hover-up bg-white transition position-relative" style="border-top: 3px solid #8FA43E !important;">
+                    <div class="position-absolute top-0 end-0 p-3 fw-bold display-6 font-heading opacity-10" style="color: #8FA43E; pointer-events: none;">02</div>
+                    <div class="card-body p-0">
+                        <h4 class="fw-bold mb-3" style="color: #0f172a; padding-right: 2rem;">Sourcing & Vetting</h4>
+                        <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                            Leveraging deep market networks, headhunting pipelines, and proactive cross-border candidate search tools, we source premium active and passive talent. Every professional undergoes rigorous preliminary screening before selection.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="card-grid hover-up thirdCard wow mh340 animate__animated animate__fadeInUp">
-                    <h3 class="card-heading">Screening & Shortlisting
-                    </h3>
-                    <ul class="mt-10">
-                        <li>
-                            We carefully review resumes to identify qualified applicants.
-                        </li>
-                        <li></li>
-                        <li>
-                            We conduct initial interviews to evaluate skills, experience, and cultural fit.
-                        </li>
-                        <li>
-                            We present a curated list of top candidates for your consideration.
-                        </li>
 
-                    </ul>
+            <!-- Phase 3 -->
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="card h-100 border-0 p-4 shadow-sm hover-up bg-white transition position-relative" style="border-top: 3px solid #e2e8f0 !important;">
+                    <div class="position-absolute top-0 end-0 p-3 fw-bold display-6 font-heading opacity-10" style="color: #0f172a; pointer-events: none;">03</div>
+                    <div class="card-body p-0">
+                        <h4 class="fw-bold mb-3" style="color: #0f172a; padding-right: 2rem;">Curated Delivery</h4>
+                        <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                            Instead of sending cluttered resumes, we deliver a meticulously short-listed catalog of premier profiles accompanied by interview assessment notes. We handle full collaboration and interview coordination seamlessly.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="card-grid fourthCard hover-up wow animate__animated animate__fadeInUp mh287">
-                    <h3 class="card-heading">Client Collaboration
-                    </h3>
-                    <ul class="mt-10">
-                        <li>
-                            We present thorough profiles, including resumes and interview notes.
-                        </li>
-                        <li></li>
-                        <li>
-                            We gather your feedback to refine the search process as needed.
 
-                        </li>
-                        <li>
-                            We manage follow-up interviews and scheduling for a seamless experience.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="card-grid fifthCard hover-up wow animate__animated animate__fadeInUp">
-                    <h3 class="card-heading">Interview Coordination
-                    </h3>
-                    <ul class="mt-10">
-                        <li>
-                            We schedule interviews between you and shortlisted candidates.
-                        </li>
-                        <li></li>
-                        <li>
-                            We provide candidates with insights about your company and the role for thorough
-                            preparation.
-                        </li>
-                        <li>
-                            We gather feedback from both parties after each interview.
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="card-grid sixthCard hover-up wow animate__animated animate__fadeInUp">
-                    <h3 class="card-heading">Selection & Offer Management
-                    </h3>
-                    <ul class="mt-10">
-                        <li>
-                            We help you select the best-fit candidate.
-                        </li>
-                        <li></li>
-                        <li>
-                            We manage offer negotiations between you and the candidate.
-                        </li>
-                        <li>
-                            We ensure a seamless acceptance process and prepare for onboarding.
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="card-grid seventhCard hover-up wow animate__animated animate__fadeInUp">
-                    <h3 class="card-heading">Onboarding Support
-                    </h3>
-                    <ul class="mt-10">
-                        <li>
-                            We help new hires integrate seamlessly into your organization.
-                        </li>
-                        <li></li>
-                        <li>
-                            We offer guidance during the probation period to address any challenges.
-                        </li>
-                        <li>
-                            We coordinate any necessary training or orientation programs to accelerate
-                            productivity.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <div class="card-grid eighthCard hover-up wow animate__animated animate__fadeInUp">
-                    <h3 class="card-heading">Post-Placement Services
-                    </h3>
-                    <ul class="mt-10">
-                        <li>
-                            We maintain ongoing communication with you and the candidate to ensure satisfaction.
-                        </li>
-                        <li></li>
-                        <li>
-                            We monitor performance and offer additional support for long-term success.
-                        </li>
-                        <li>
-                            We gather feedback to continually refine our recruitment approach.
-                        </li>
-                    </ul>
+            <!-- Phase 4 -->
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <div class="card h-100 border-0 p-4 shadow-sm hover-up bg-white transition position-relative" style="border-top: 3px solid #8FA43E !important;">
+                    <div class="position-absolute top-0 end-0 p-3 fw-bold display-6 font-heading opacity-10" style="color: #8FA43E; pointer-events: none;">04</div>
+                    <div class="card-body p-0">
+                        <h4 class="fw-bold mb-3" style="color: #0f172a; padding-right: 2rem;">Placement & Retention</h4>
+                        <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                            Our partnership extends past offer management. We support your human capital infrastructure throughout negotiation frameworks, initial corporate onboarding configurations, and long-term placement performance evaluations.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
