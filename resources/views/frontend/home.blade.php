@@ -106,9 +106,9 @@ $schemaData = [
                         Olive Resources partners with world-class enterprises, high-growth startups, and multinational corporations to secure industry-defining talent in real time. Scale your organizational foundation with precision.
                     </p>
                     <div class="mt-4 pt-2 wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
-                        <button type="button" class="btn btn-lg font-heading text-white px-4 py-3 shadow-lg btn-partner transition" data-bs-toggle="modal" data-bs-target="#contactModal" style="background-color: #8FA43E; border: none; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px;">
-                            Partner With Us &rarr;
-                        </button>
+                           <a href="#contact-section" class="btn btn-lg font-heading text-white px-4 py-3 shadow-lg btn-partner transition text-decoration-none d-inline-block" style="background-color: #8FA43E; border: none; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px;">
+                                Partner With Us &rarr;
+                            </a>
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@ $schemaData = [
 
     <!-- EMPOWERING HIRING SECTION -->
     <section class="section-box my-5 py-4">
-        <div class="container">
+        <div class="container-xl">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-sm-12">
                     <div class="content-job-inner pe-lg-4">
@@ -208,64 +208,160 @@ $schemaData = [
     </section>
 
     <!-- OUR ENTERPRISE SERVICES -->
-    <section class="section-box py-5" style="background-color: #f8fafc;">
-        <div class="container">
-            <div class="text-center max-w-xl mx-auto mb-5">
-                <span style="color: #8FA43E; font-weight: 700;" class="text-uppercase font-heading small">Capabilities</span>
-                <h2 class="section-title fw-bold mt-2 heading-lg text-center wow animate__animated animate__fadeInUp" style="color: #0f172a;">
-                    Our Workforce Solutions
-                </h2>
-            </div>
-            
-            <div class="box-swiper mt-4">
-                <div class="swiper-container swiper-group-3 slider-our-service">
-                    <div class="swiper-wrapper pt-2">
-                        <!-- Card 1 -->
-                        <div class="swiper-slide h-auto mb-4">
-                            <div class="card h-100 border-0 shadow-sm p-4 hover-up bg-white text-dark transition" style="border-top: 4px solid #8FA43E !important;">
-                                <div class="card-body p-0">
-                                    <h4 class="fw-bold mb-3" style="color: #0f172a;">Permanent Recruitment</h4>
-                                    <p class="text-muted small">Connecting organizations with high-caliber talent designed for sustainable, long-term operational success.</p>
-                                    <ul class="list-unstyled mt-3 small text-secondary">
-                                        <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: #8FA43E;"></i> Industry-specific executive placement</li>
-                                        <li><i class="bi bi-check-circle-fill me-2" style="color: #8FA43E;"></i> Exhaustive asset & culture vetting</li>
-                                    </ul>
+   <!-- OUR ENTERPRISE SERVICES -->
+<section class="section-box py-5 position-relative overflow-hidden" style="background-color: #f8fafc;">
+    <!-- Subtle architectural background accent grid -->
+    <div class="position-absolute opacity-5" style="top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(#0f172a 1px, transparent 1px), linear-gradient(90deg, #0f172a 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
+
+    <div class="container-xl position-relative" style="z-index: 2;">
+        <div class="text-center max-w-xl mx-auto mb-5">
+            <span style="color: #8FA43E; font-weight: 700; letter-spacing: 1.5px;" class="text-uppercase font-heading small">Capabilities</span>
+            <h2 class="section-title fw-bold mt-2 heading-lg text-center wow animate__animated animate__fadeInUp" style="color: #0f172a; font-size: 2.5rem; letter-spacing: -0.5px;">
+                Our Workforce Solutions
+            </h2>
+            <p class="text-muted small mt-2">Engineered talent infrastructure designed to scale corporate operations globally.</p>
+        </div>
+        
+        <div class="box-swiper mt-4">
+            <div class="swiper-container swiper-group-3 slider-our-service">
+                <div class="swiper-wrapper pt-2">
+                    
+                    <!-- Card 1: Permanent Recruitment -->
+                    <div class="swiper-slide h-auto mb-4">
+                        <div class="card h-100 border-0 shadow-sm p-4 hover-corporate bg-white text-dark transition" style="border-top: 4px solid #8FA43E !important; border-radius: 8px;">
+                            <div class="card-body p-0 d-flex flex-column h-100">
+                                <!-- Service Header / Icon Placeholder Container -->
+                                <div class="d-flex align-items-center gap-3 mb-4">
+                                    <div class="rounded p-2 d-flex align-items-center justify-content-center" style="background-color: rgba(143,164,62,0.1); width: 46px; height: 46px; flex-shrink: 0;">
+                                        <i class="bi bi-people" style="color: #8FA43E; font-size: 1.4rem;"></i>
+                                    </div>
+                                    <h4 class="fw-bold mb-0" style="color: #0f172a; font-size: 1.25rem;">Permanent Recruitment</h4>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- Card 2 -->
-                        <div class="swiper-slide h-auto mb-4">
-                            <div class="card h-100 border-0 shadow-sm p-4 hover-up bg-white text-dark transition" style="border-top: 4px solid #8FA43E !important;">
-                                <div class="card-body p-0">
-                                    <h4 class="fw-bold mb-3" style="color: #0f172a;">Executive Search</h4>
-                                    <p class="text-muted small">Targeted cross-border search strategies exclusively focused on securing C-Suite professionals and organizational leaders.</p>
-                                    <ul class="list-unstyled mt-3 small text-secondary">
-                                        <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: #8FA43E;"></i> Discreet, elite network headhunting</li>
-                                        <li><i class="bi bi-check-circle-fill me-2" style="color: #8FA43E;"></i> Global leadership pipeline access</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card 3 -->
-                        <div class="swiper-slide h-auto mb-4">
-                            <div class="card h-100 border-0 shadow-sm p-4 hover-up bg-white text-dark transition" style="border-top: 4px solid #8FA43E !important;">
-                                <div class="card-body p-0">
-                                    <h4 class="fw-bold mb-3" style="color: #0f172a;">Contract Staffing Solutions</h4>
-                                    <p class="text-muted small">Agile, scalable workforce architecture configured for immediate mid-level, enterprise contract deployments.</p>
-                                    <ul class="list-unstyled mt-3 small text-secondary">
-                                        <li class="mb-2"><i class="bi bi-check-circle-fill me-2" style="color: #8FA43E;"></i> Rapid operational workload mitigation</li>
-                                        <li><i class="bi bi-check-circle-fill me-2" style="color: #8FA43E;"></i> Managed workforce risk profiling</li>
-                                    </ul>
+                                
+                                <p class="text-muted small mb-4" style="line-height: 1.6;">
+                                    Connecting global organizations with high-caliber, elite professionals engineered for long-term operational impact and sustainable corporate scaling.
+                                </p>
+                                
+                                <!-- Extended Technical Deliverables -->
+                                <div class="mt-auto border-top pt-3" style="border-color: #f1f5f9 !important;">
+                                    <div class="mb-3">
+                                        <span class="text-uppercase tracking-wider text-muted fw-bold font-heading" style="font-size: 0.7rem; letter-spacing: 0.5px;">Executive Search</span>
+                                        <ul class="list-unstyled mt-2 small text-secondary">
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Cross-border enterprise placement parameters.</span></li>
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Comprehensive target market evaluation blueprints.</span></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <span class="text-uppercase tracking-wider text-muted fw-bold font-heading" style="font-size: 0.7rem; letter-spacing: 0.5px;">Vetting Framework</span>
+                                        <ul class="list-unstyled mt-2 small text-secondary mb-0">
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Exhaustive cultural assessment alignment.</span></li>
+                                            <li class="d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Rigorous tech stack & competency benchmarking.</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    
+                    <!-- Card 2: Executive Search & Headhunting -->
+                    <div class="swiper-slide h-auto mb-4">
+                        <div class="card h-100 border-0 shadow-sm p-4 hover-corporate bg-white text-dark transition" style="border-top: 4px solid #8FA43E !important; border-radius: 8px;">
+                            <div class="card-body p-0 d-flex flex-column h-100">
+                                <!-- Service Header -->
+                                <div class="d-flex align-items-center gap-3 mb-4">
+                                    <div class="rounded p-2 d-flex align-items-center justify-content-center" style="background-color: rgba(143,164,62,0.1); width: 46px; height: 46px; flex-shrink: 0;">
+                                        <i class="bi bi-award" style="color: #8FA43E; font-size: 1.4rem;"></i>
+                                    </div>
+                                    <h4 class="fw-bold mb-0" style="color: #0f172a; font-size: 1.25rem;">Executive Search</h4>
+                                </div>
+                                
+                                <p class="text-muted small mb-4" style="line-height: 1.6;">
+                                    Targeted, highly discreet headhunting methodologies engineered exclusively to secure C-suite professionals, senior directors, and critical industry leaders.
+                                </p>
+                                
+                                <!-- Extended Technical Deliverables -->
+                                <div class="mt-auto border-top pt-3" style="border-color: #f1f5f9 !important;">
+                                    <div class="mb-3">
+                                        <span class="text-uppercase tracking-wider text-muted fw-bold font-heading" style="font-size: 0.7rem; letter-spacing: 0.5px;">Leadership Pipeline</span>
+                                        <ul class="list-unstyled mt-2 small text-secondary">
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Discreet, unadvertised market headhunting networks.</span></li>
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Mapping passive tech-innovator and industry talent.</span></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <span class="text-uppercase tracking-wider text-muted fw-bold font-heading" style="font-size: 0.7rem; letter-spacing: 0.5px;">Strategic Advisory</span>
+                                        <ul class="list-unstyled mt-2 small text-secondary mb-0">
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Compensation architecture consulting metrics.</span></li>
+                                            <li class="d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Risk-mitigated organizational leadership transitions.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3: Contract Staffing Solutions -->
+                    <div class="swiper-slide h-auto mb-4">
+                        <div class="card h-100 border-0 shadow-sm p-4 hover-corporate bg-white text-dark transition" style="border-top: 4px solid #8FA43E !important; border-radius: 8px;">
+                            <div class="card-body p-0 d-flex flex-column h-100">
+                                <!-- Service Header -->
+                                <div class="d-flex align-items-center gap-3 mb-4">
+                                    <div class="rounded p-2 d-flex align-items-center justify-content-center" style="background-color: rgba(143,164,62,0.1); width: 46px; height: 46px; flex-shrink: 0;">
+                                        <i class="bi bi-cpu" style="color: #8FA43E; font-size: 1.4rem;"></i>
+                                    </div>
+                                    <h4 class="fw-bold mb-0" style="color: #0f172a; font-size: 1.25rem;">Contract Staffing</h4>
+                                </div>
+                                
+                                <p class="text-muted small mb-4" style="line-height: 1.6;">
+                                    Agile, on-demand workforce deployment models configured to supply mid-level to senior contingent contractors for specialized project-based execution.
+                                </p>
+                                
+                                <!-- Extended Technical Deliverables -->
+                                <div class="mt-auto border-top pt-3" style="border-color: #f1f5f9 !important;">
+                                    <div class="mb-3">
+                                        <span class="text-uppercase tracking-wider text-muted fw-bold font-heading" style="font-size: 0.7rem; letter-spacing: 0.5px;">Agile Scale</span>
+                                        <ul class="list-unstyled mt-2 small text-secondary">
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Rapid execution to mitigate sudden project spikes.</span></li>
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Pre-vetted engineering and software general pools.</span></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <span class="text-uppercase tracking-wider text-muted fw-bold font-heading" style="font-size: 0.7rem; letter-spacing: 0.5px;">Compliance Framework</span>
+                                        <ul class="list-unstyled mt-2 small text-secondary mb-0">
+                                            <li class="mb-2 d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>End-to-end multi-regional payroll risk mitigation.</span></li>
+                                            <li class="d-flex align-items-start gap-2"><i class="bi bi-check2 text-brand-olive"></i> <span>Seamless onboarding and offboarding management systems.</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+    /* Premium Hover States & Accent Utilities */
+    .hover-corporate {
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .hover-corporate:hover {
+        transform: translateY(-6px) !important;
+        box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.1) !important;
+    }
+    .text-brand-olive {
+        color: #8FA43E !important;
+        font-weight: 700;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        color: #0f172a !important;
+    }
+</style>
 
     <!-- NEW FRONTEND VISUAL FAQ ACCORDION SECTION -->
     <section class="section-box py-5 my-4" style="background-color: #ffffff;">
@@ -338,54 +434,123 @@ $schemaData = [
     </section>
 
     @include(frontend_module_view('common.newsletter', 'Page'))
+    <!-- NEW INLINE EMBEDDED CONTACT US SECTION (POSITIONED AFTER NEWSLETTER) -->
+    <!-- CORPORATE ENGAGEMENT SECTION -->
+<section id="contact-section" class="section-box py-5 " style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+    <div class="container-xl py-4">
+        <div class="row g-5 align-items-center">
+            
+            <!-- Left Info Column: Trust Anchors & Contact Details -->
+            <div class="col-lg-5 wow animate__animated animate__fadeInLeft">
+                <div class="pe-lg-4">
+                    <span style="color: #8FA43E; font-weight: 700;" class="text-uppercase font-heading small tracking-wider">Partner Engagement</span>
+                    <h2 class="fw-bold mt-2 mb-4" style="color: #0f172a; font-size: 2.25rem; letter-spacing: -0.5px; line-height: 1.2;">
+                        Let’s Build Your Next Engineering Vanguard.
+                    </h2>
+                    <p class="text-secondary mb-4" style="line-height: 1.6; font-size: 1rem;">
+                        Olive Resources bridges critical gaps for enterprises demanding rapid technical expansion, specialized C-suite search execution, and managed contract support infrastructure across global regions.
+                    </p>
+                    
+                    <!-- Direct Touchpoints -->
+                    <div class="mt-4 pt-2">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded d-flex align-items-center justify-content-center" style="background-color: rgba(143,164,62,0.1); width: 40px; height: 40px; flex-shrink: 0;">
+                                <i class="bi bi-envelope-open" style="color: #8FA43E; font-size: 1.1rem;"></i>
+                            </div>
+                            <div>
+                                <p class="text-muted small mb-0">Official Communications</p>
+                                <a href="mailto:hr@oliveresourcs.com" class="fw-semibold text-decoration-none" style="color: #0f172a;">hr@oliveresourcs.com</a>
+                            </div>
+                        </div>
+
+                        @if(!empty($site_settings['contact_support']['contact_number']))
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="rounded d-flex align-items-center justify-content-center" style="background-color: rgba(143,164,62,0.1); width: 40px; height: 40px; flex-shrink: 0;">
+                                <i class="bi bi-telephone" style="color: #8FA43E; font-size: 1.1rem;"></i>
+                            </div>
+                            <div>
+                                <p class="text-muted small mb-0">Corporate Desk</p>
+                                <a href="tel:+{{ preg_replace('/[^0-9]/', '', $site_settings['contact_support']['contact_number']) }}" class="fw-semibold text-decoration-none" style="color: #0f172a;">{{ $site_settings['contact_support']['contact_number'] }}</a>
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Premium Interactive Form -->
+            <div class="col-lg-7 wow animate__animated animate__fadeInRight">
+                <div class="card border-0 shadow-xl p-4 p-md-5 bg-white rounded-3" style="border-top: 4px solid #8FA43E !important; box-shadow: 0 20px 40px -15px rgba(15,23,42,0.08) !important;">
+                    <div class="mb-4">
+                        <h4 class="fw-bold mb-1" style="color: #0f172a;">Request Corporate Consultation</h4>
+                        <p class="text-muted small mb-0">Submit your operational parameters below for a structured brief review.</p>
+                    </div>
+
+                    <div id="success-message" class="alert alert-success mt-2 d-none">Thank you for contacting us, we will reach you shortly</div>
+                    
+                    <form id="contactForm" class="mt-2">
+                        @csrf
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-secondary mb-1">First Name <span class="text-danger">*</span></label>
+                                <input type="text" name="first_name" class="form-control px-3 py-2 bg-light border-0 rounded-2" placeholder="e.g., Alexander" style="font-size: 0.95rem;" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-secondary mb-1">Last Name <span class="text-danger">*</span></label>
+                                <input type="text" name="last_name" class="form-control px-3 py-2 bg-light border-0 rounded-2" placeholder="e.g., Vance" style="font-size: 0.95rem;" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-secondary mb-1">Corporate Phone</label>
+                                <input type="tel" name="phone" class="form-control px-3 py-2 bg-light border-0 rounded-2" placeholder="+1 (555) 000-0000" style="font-size: 0.95rem;">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold text-secondary mb-1">Business Email <span class="text-danger">*</span></label>
+                                <input type="email" name="email" class="form-control px-3 py-2 bg-light border-0 rounded-2" placeholder="name@enterprise.com" style="font-size: 0.95rem;" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label small fw-semibold text-secondary mb-1">Workforce Requirements <span class="text-danger">*</span></label>
+                            <textarea name="message" class="form-control px-3 py-2 bg-light border-0 rounded-2" rows="4" maxlength="250" placeholder="Specify your talent acquisition or remote team workforce requirements (Max 250 characters)..." style="font-size: 0.95rem; resize: none;" required></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-submit-engagement w-100 font-heading text-white py-3 fw-bold transition" style="background-color: #8FA43E; border-radius: 4px; font-size: 1rem; letter-spacing: 0.5px; border: none;">
+                            Submit Engagement Brief &rarr;
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Premium Hover & Input Micro-Interactions */
+    .btn-submit-engagement:hover {
+        background-color: #7b8e34 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 20px rgba(143,164,62,0.25) !important;
+    }
+    .form-control:focus {
+        background-color: #ffffff !important;
+        border: 1px solid #8FA43E !important;
+        box-shadow: 0 0 0 4px rgba(143,164,62,0.15) !important;
+    }
+    .form-label {
+        letter-spacing: 0.3px;
+    }
+</style>
 </div>
 
 <!-- CONTACT MODAL -->
-<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 shadow">
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title fw-bold text-white" id="contactModalLabel">Request Consultation</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-4">
-                <div id="success-message" class="alert alert-success mt-3 d-none">Thank you for contacting us, we will reach you shortly</div>
-                <form id="contactForm">
-                    @csrf
-                    <div class="mb-3">
-                        <input type="text" name="first_name" class="form-control py-2" placeholder="First Name" required>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" name="last_name" class="form-control py-2" placeholder="Last Name" required>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <input type="tel" name="phone" class="form-control py-2" placeholder="Corporate Phone">
-                                <div class="invalid-feedback"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <input type="email" name="email" class="form-control py-2" placeholder="Business Email" required>
-                                <div class="invalid-feedback"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="message" class="form-control" rows="4" maxlength="250" placeholder="Specify your hiring requirements (Max 250 characters)" required></textarea>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="text-center pt-2">
-                        <button type="submit" class="btn w-100 font-heading text-white py-2" style="background-color: #8FA43E;">Submit Engagement Brief</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection
 
 @push('scripts')
