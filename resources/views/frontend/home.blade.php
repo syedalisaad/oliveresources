@@ -148,6 +148,10 @@ $schemaData = [
 </section>
 <style>
     /* Clean button slide transition effect */
+     .collapse{
+        visibility:visible
+
+    }
     .btn-partner:hover {
         background-color: #7b8e34 !important;
         transform: translateY(-2px);
